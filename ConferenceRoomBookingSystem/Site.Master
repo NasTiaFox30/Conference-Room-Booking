@@ -11,7 +11,18 @@
 </head>
 <body>
     <form runat="server">
+        <div class="navbar">
    
+        </div>
+
+        <div class="container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div class="footer">
+            Confrence Room Booking System &copy; <%: DateTime.Now.Year %> - Anastasiia Bzova
+        </div>
     </form>
 </body>
 </html>
