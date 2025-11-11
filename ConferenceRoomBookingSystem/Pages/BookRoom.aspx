@@ -12,5 +12,6 @@
             <h2 class="bookroom-title">Rezerwacja sali konferencyjnej</h2>
         </div>
     
+        <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
     </div>
 </asp:Content>
