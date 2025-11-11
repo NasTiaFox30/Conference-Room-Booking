@@ -39,6 +39,13 @@ namespace ConferenceRoomBookingSystem.Data
 
         public ConferenceRoom GetRoomById(int roomId)
         {
+            var query = @"SELECT * FROM ConferenceRooms WHERE RoomId = @RoomId";
+            var parameters = new SqlParameter[] { new SqlParameter("@RoomId", roomId) };
+            var dataTable = dbHelper.ExecuteQuery(query, parameters);
+
+            if (dataTable.Rows.Count == 0) return null;
+
+            var row = dataTable.Rows[0];
             return new ConferenceRoom
             {
                
