@@ -23,6 +23,14 @@ namespace ConferenceRoomBookingSystem.Pages
 
         private void SearchAvailableRooms()
         {
+            if (!DateTime.TryParse(txtDate.Text, out DateTime searchDate))
+                searchDate = DateTime.Now;
+
+            if (!TimeSpan.TryParse(txtStartTime.Text, out TimeSpan startTime))
+                startTime = new TimeSpan(9, 0, 0);
+
+            if (!TimeSpan.TryParse(txtEndTime.Text, out TimeSpan endTime))
+                endTime = new TimeSpan(10, 0, 0);
            
         }
 
