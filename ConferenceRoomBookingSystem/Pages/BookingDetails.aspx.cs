@@ -29,5 +29,20 @@ namespace ConferenceRoomBookingSystem.Pages
             btnCancel.Visible = booking.Status == "Confirmed" &&
                               booking.StartTime > DateTime.Now.AddHours(24);
         }
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(Request.QueryString["bookingId"], out int bookingId))
+                return;
+
+            var bookingRepo = new BookingRepository();
+            if (bookingRepo.CancelBooking(bookingId))
+            {
+                Response.Redirect("~/Pages/MyBookings.aspx");
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Błąd podczas odwołania');", true);
+            }
+        }
     }
 }
