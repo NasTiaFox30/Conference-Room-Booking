@@ -20,5 +20,21 @@ namespace ConferenceRoomBookingSystem.Pages
             }
         }
 
+
+        public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
+        {
+            var equipment = new List<string>();
+
+            if (hasProjector != null && (bool)hasProjector)
+                equipment.Add("Projektor");
+            if (hasWhiteboard != null && (bool)hasWhiteboard)
+                equipment.Add("Tablica");
+            if (hasAudioSystem != null && (bool)hasAudioSystem)
+                equipment.Add("System audio");
+            if (hasWiFi != null && (bool)hasWiFi)
+                equipment.Add("Wi-Fi");
+
+            return string.Join(", ", equipment);
+        }
     }
 }
