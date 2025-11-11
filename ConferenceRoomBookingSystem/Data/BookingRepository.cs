@@ -50,6 +50,28 @@ namespace ConferenceRoomBookingSystem.Data
                         checkCmd.Parameters.AddWithValue("@StartTime", booking.StartTime);
                         checkCmd.Parameters.AddWithValue("@EndTime", booking.EndTime);
 
+                        
+
+                        // INSERT
+                        var insertCmd = new SqlCommand(@"
+                            INSERT INTO Bookings 
+                            (RoomId, UserId, Title, Description, StartTime, EndTime, Attendees, Status, CreatedDate)
+                            VALUES 
+                            (@RoomId, @UserId, @Title, @Description, @StartTime, @EndTime, @Attendees, @Status, @CreatedDate)",
+                            connection, transaction);
+
+                        insertCmd.Parameters.AddWithValue("@RoomId", booking.RoomId);
+                        insertCmd.Parameters.AddWithValue("@UserId", booking.UserId);
+                        insertCmd.Parameters.AddWithValue("@Title", booking.Title);
+                        insertCmd.Parameters.AddWithValue("@Description", (object)booking.Description ?? DBNull.Value);
+                        insertCmd.Parameters.AddWithValue("@StartTime", booking.StartTime);
+                        insertCmd.Parameters.AddWithValue("@EndTime", booking.EndTime);
+                        insertCmd.Parameters.AddWithValue("@Attendees", (object)booking.Attendees ?? DBNull.Value);
+                        insertCmd.Parameters.AddWithValue("@Status", booking.Status);
+                        insertCmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+
+                        insertCmd.ExecuteNonQuery();
+                        transaction.Commit();
                         return true;
                     }
                     catch
