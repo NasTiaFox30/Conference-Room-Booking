@@ -8,6 +8,6 @@ namespace ConferenceRoomBookingSystem.Data
 {
     public class BookingRepository
     {
-       
+        private readonly DatabaseHelper dbHelper;
     }
 }
