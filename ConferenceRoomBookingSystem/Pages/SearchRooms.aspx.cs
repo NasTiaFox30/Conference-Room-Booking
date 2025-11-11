@@ -12,6 +12,12 @@ namespace ConferenceRoomBookingSystem.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtStartTime.Text = "09:00";
+                txtEndTime.Text = "10:00";
+            }
         }
 
     }
