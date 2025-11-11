@@ -50,8 +50,9 @@ namespace ConferenceRoomBookingSystem.Data
                         checkCmd.Parameters.AddWithValue("@StartTime", booking.StartTime);
                         checkCmd.Parameters.AddWithValue("@EndTime", booking.EndTime);
 
+                        if (Convert.ToInt32(checkCmd.ExecuteScalar()) > 0)
+                            return false;
                         
-
                         // INSERT
                         var insertCmd = new SqlCommand(@"
                             INSERT INTO Bookings 
