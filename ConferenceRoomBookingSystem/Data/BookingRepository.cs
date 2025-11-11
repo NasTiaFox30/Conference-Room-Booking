@@ -31,5 +31,25 @@ namespace ConferenceRoomBookingSystem.Data
             return Convert.ToInt32(result) == 0;
         }
 
+        public bool CreateBooking(Booking booking)
+        {
+            using (var connection = dbHelper.GetConnection())
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
     }
 }
