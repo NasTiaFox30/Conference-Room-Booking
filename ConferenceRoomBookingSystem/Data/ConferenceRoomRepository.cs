@@ -37,5 +37,12 @@ namespace ConferenceRoomBookingSystem.Data
             return rooms;
         }
 
+        public ConferenceRoom GetRoomById(int roomId)
+        {
+            return new ConferenceRoom
+            {
+               
+            };
+        }
     }
 }
