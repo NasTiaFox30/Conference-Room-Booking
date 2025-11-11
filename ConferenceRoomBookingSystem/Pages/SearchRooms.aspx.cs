@@ -21,6 +21,11 @@ namespace ConferenceRoomBookingSystem.Pages
         }
 
 
+        private void SearchAvailableRooms()
+        {
+           
+        }
+
         public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
         {
             var equipment = new List<string>();
