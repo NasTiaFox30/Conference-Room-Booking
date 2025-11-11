@@ -35,6 +35,12 @@ namespace ConferenceRoomBookingSystem.Pages
             var startDateTime = searchDate.Add(startTime);
             var endDateTime = searchDate.Add(endTime);
 
+            var roomRepo = new ConferenceRoomRepository();
+            var bookingRepo = new BookingRepository();
+
+            var allRooms = roomRepo.GetAllRooms();
+            var availableRooms = new List<ConferenceRoom>();
+
         }
 
         public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
