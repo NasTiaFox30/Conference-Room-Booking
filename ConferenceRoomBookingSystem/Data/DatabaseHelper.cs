@@ -53,5 +53,17 @@ namespace ConferenceRoomBookingSystem.Data
             }
         }
 
+        public int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
+        {
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand(query, connection))
+            {
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
+
+                connection.Open();
+                return command.ExecuteNonQuery();
+            }
+        }
     }
 }
