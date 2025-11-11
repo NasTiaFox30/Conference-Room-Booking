@@ -61,6 +61,19 @@ namespace ConferenceRoomBookingSystem.Pages
 
                 availableRooms.Add(room);
             }
+
+            if (availableRooms.Any())
+            {
+                gvAvailableRooms.DataSource = availableRooms;
+                gvAvailableRooms.DataBind();
+                gvAvailableRooms.Visible = true;
+                lblNoRooms.Visible = false;
+            }
+            else
+            {
+                gvAvailableRooms.Visible = false;
+                lblNoRooms.Visible = true;
+            }
         }
 
         public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
