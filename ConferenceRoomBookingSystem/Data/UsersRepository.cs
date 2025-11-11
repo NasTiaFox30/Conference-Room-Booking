@@ -34,6 +34,13 @@ namespace ConferenceRoomBookingSystem.Data
             };
         }
 
+        public bool ValidateUser(string username, string password)
+        {
+            var user = GetUserByUsername(username);
+            if (user == null || string.IsNullOrEmpty(user.PasswordHash)) return false;
+            return BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
+        }
+
         public bool CreateUser(User user, string plainPassword)
         {
             var query = @"
