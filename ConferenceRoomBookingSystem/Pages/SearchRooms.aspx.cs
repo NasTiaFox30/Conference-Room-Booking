@@ -36,5 +36,14 @@ namespace ConferenceRoomBookingSystem.Pages
 
             return string.Join(", ", equipment);
         }
+
+        protected void gvAvailableRooms_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "BookRoom")
+            {
+                int roomId = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect($"~/Pages/BookRoom.aspx?roomId={roomId}&date={txtDate.Text}&start={txtStartTime.Text}&end={txtEndTime.Text}");
+            }
+        }
     }
 }
