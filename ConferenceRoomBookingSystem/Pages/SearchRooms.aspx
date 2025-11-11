@@ -8,5 +8,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="search-rooms-container">
+        <div class="search-rooms-header">
+            <h2 class="search-rooms-title">Wyszukiwanie sal konferencyjnych</h2>
+        </div>
+        
     </div>
 </asp:Content>
