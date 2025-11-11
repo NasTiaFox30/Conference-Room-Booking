@@ -94,6 +94,13 @@ namespace ConferenceRoomBookingSystem.Data
                 INNER JOIN Users u ON b.UserId = u.UserId
                 WHERE b.UserId = @UserId";
 
+            if (filter == "Upcoming")
+                query += " AND b.StartTime >= @CurrentTime AND b.Status = 'Confirmed'";
+            else if (filter == "Past")
+                query += " AND b.StartTime < @CurrentTime";
+
+            query += " ORDER BY b.StartTime DESC";
+
             return bookings;
         }
 
