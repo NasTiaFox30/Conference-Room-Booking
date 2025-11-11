@@ -48,6 +48,11 @@ namespace ConferenceRoomBookingSystem.Pages
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(Request.QueryString["roomId"], out roomId))
+            {
+                ShowError("Nieprawidłowy identyfikator sali.");
+                return;
+            }
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
