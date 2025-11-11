@@ -48,7 +48,16 @@ namespace ConferenceRoomBookingSystem.Data
             var row = dataTable.Rows[0];
             return new ConferenceRoom
             {
-               
+                RoomId = Convert.ToInt32(row["RoomId"]),
+                RoomName = row["RoomName"].ToString(),
+                Capacity = Convert.ToInt32(row["Capacity"]),
+                Location = row["Location"].ToString(),
+                Description = row["Description"].ToString(),
+                HasProjector = Convert.ToBoolean(row["HasProjector"]),
+                HasWhiteboard = Convert.ToBoolean(row["HasWhiteboard"]),
+                HasAudioSystem = Convert.ToBoolean(row["HasAudioSystem"]),
+                HasWiFi = Convert.ToBoolean(row["HasWiFi"]),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
             };
         }
     }
