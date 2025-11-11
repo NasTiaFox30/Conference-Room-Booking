@@ -85,6 +85,39 @@ namespace ConferenceRoomBookingSystem.Data
         }
 
 
+
+        public Booking GetBookingById(int bookingId)
+        {
+            var query = @"
+                SELECT b.*, r.RoomName, u.FirstName + ' ' + u.LastName AS UserName
+                FROM Bookings b
+                INNER JOIN ConferenceRooms r ON b.RoomId = r.RoomId
+                INNER JOIN Users u ON b.UserId = u.UserId
+                WHERE b.BookingId = @BookingId";
+
+            var parameters = new SqlParameter[] { new SqlParameter("@BookingId", bookingId) };
+            var dataTable = dbHelper.ExecuteQuery(query, parameters);
+
+            if (dataTable.Rows.Count == 0) return null;
+
+            var row = dataTable.Rows[0];
+            return new Booking
+            {
+                BookingId = Convert.ToInt32(row["BookingId"]),
+                RoomId = Convert.ToInt32(row["RoomId"]),
+                UserId = Convert.ToInt32(row["UserId"]),
+                Title = row["Title"].ToString(),
+                Description = row["Description"]?.ToString(),
+                StartTime = Convert.ToDateTime(row["StartTime"]),
+                EndTime = Convert.ToDateTime(row["EndTime"]),
+                Attendees = row["Attendees"]?.ToString(),
+                Status = row["Status"].ToString(),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                RoomName = row["RoomName"].ToString(),
+                UserName = row["UserName"].ToString()
+            };
+        }
+
         public bool CancelBooking(int bookingId)
         {
             var query = "UPDATE Bookings SET Status = 'Cancelled' WHERE BookingId = @BookingId";
