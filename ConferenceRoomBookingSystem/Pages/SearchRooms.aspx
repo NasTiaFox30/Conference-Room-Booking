@@ -54,6 +54,15 @@
                 OnClick="btnSearch_Click" CssClass="search-button btn btn-primary" />
         </div>
 
+        <asp:GridView ID="gvAvailableRooms" runat="server" AutoGenerateColumns="false" 
+            CssClass="rooms-table" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
+            <Columns>
+                <asp:BoundField DataField="RoomName" HeaderText="Nazwa sali" />
+                <asp:BoundField DataField="Capacity" HeaderText="Pojemność" />
+                <asp:BoundField DataField="Location" HeaderText="Lokalizacja" />
+                
+            </Columns>
+        </asp:GridView>
         
         <asp:Label ID="lblNoRooms" runat="server" Text="Brak dostępnych sal spełniających podane kryteria." 
             Visible="false" CssClass="no-rooms-message"></asp:Label>
