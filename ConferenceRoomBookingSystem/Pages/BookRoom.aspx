@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Rezerwacja sali" Language="C#" MasterPageFile="~/Site.Master"
-    AutoEventWireup="true" CodeBehind="BookRoom.aspx.cs" 
+    AutoEventWireup="true" CodeBehind="BookRoom.aspx.cs"
     Inherits="ConferenceRoomBookingSystem.Pages.BookRoom" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -11,7 +11,7 @@
         <div class="bookroom-header">
             <h2 class="bookroom-title">Rezerwacja sali konferencyjnej</h2>
         </div>
-    
+       
         <div class="bookroom-content">
             <!-- Szczegóły sali -->
             <div>
