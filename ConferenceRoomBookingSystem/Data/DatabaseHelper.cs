@@ -31,5 +31,10 @@ namespace ConferenceRoomBookingSystem.Data
             }
         }
 
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
     }
 }
