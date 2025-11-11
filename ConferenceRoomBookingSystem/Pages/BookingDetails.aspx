@@ -53,5 +53,13 @@
                 </div>
             </ItemTemplate>
         </asp:FormView>
+        
+        <div class="booking-actions">
+            <asp:Button ID="btnBack" runat="server" Text="Wstecz" 
+                OnClick="btnBack_Click" CssClass="btn btn-secondary" />
+            <asp:Button ID="btnCancel" runat="server" Text="Anuluj rezerwację" 
+                OnClick="btnCancel_Click" CssClass="btn btn-warning" 
+                Visible="false" />
+        </div>
     </div>
 </asp:Content>
