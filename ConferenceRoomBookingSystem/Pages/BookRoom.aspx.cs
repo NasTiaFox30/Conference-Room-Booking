@@ -46,6 +46,10 @@ namespace ConferenceRoomBookingSystem.Pages
                 txtBookingEnd.Text = "10:00";
         }
 
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+        }
+
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/SearchRooms.aspx");
