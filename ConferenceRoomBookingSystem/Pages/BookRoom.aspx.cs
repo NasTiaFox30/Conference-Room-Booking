@@ -56,6 +56,18 @@ namespace ConferenceRoomBookingSystem.Pages
 
             try
             {
+                var booking = new Booking
+                {
+                    RoomId = roomId,
+                    UserId = GetCurrentUserId(),
+                    Title = txtTitle.Text.Trim(),
+                    Description = txtDescription.Text.Trim(),
+                    StartTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingStart.Text),
+                    EndTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingEnd.Text),
+                    Attendees = txtAttendees.Text.Trim(),
+                    Status = "Confirmed",
+                    CreatedDate = DateTime.Now
+                };
             }
             catch (Exception ex)
             {
