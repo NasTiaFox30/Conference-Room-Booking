@@ -24,6 +24,16 @@ namespace ConferenceRoomBookingSystem.Pages
                     return;
                 }
                 
+                var user = new User
+                {
+                    Username = txtUsername.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    FirstName = txtFirstName.Text.Trim(),
+                    LastName = txtLastName.Text.Trim(),
+                    Department = txtDepartment.Text.Trim(),
+                    IsAdmin = false,
+                    IsActive = true
+                };
             }
         }
 
