@@ -9,7 +9,15 @@ namespace ConferenceRoomBookingSystem.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             
+        private void PerformLogout()
+        {
+            try
+            {
         }
+            catch (Exception)
+            {
 
+    }
+}
     }
 }
