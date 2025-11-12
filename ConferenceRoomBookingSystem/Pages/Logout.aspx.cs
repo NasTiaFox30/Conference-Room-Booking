@@ -12,7 +12,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 PerformLogout();
             
         }
-            
+
         private void PerformLogout()
         {
             try
@@ -26,7 +26,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 {
                     Response.Cookies["ASP.NET_SessionId"].Value = string.Empty;
                     Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddMonths(-20);
-        }
+                }
 
                 // Delete authentication cookie
                 if (Response.Cookies[".ASPXAUTH"] != null)
@@ -45,7 +45,7 @@ namespace ConferenceRoomBookingSystem.Pages
             catch (Exception)
             {
                 Response.Redirect("~/Pages/Login.aspx");
-    }
-}
+            }
+        }
     }
 }
