@@ -28,8 +28,19 @@
             </div>
 
             <div class="name-grid">
+                <div class="form-group">
+                    <label class="form-label">Imię:</label>
+                    <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ControlToValidate="txtFirstName"
+                        ErrorMessage="Wymagane" CssClass="validator-error" Display="Dynamic" />
             </div>
 
+                <div class="form-group">
+                    <label class="form-label">Nazwisko:</label>
+                    <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ID="rfvLastName" runat="server" ControlToValidate="txtLastName"
+                        ErrorMessage="Wymagane" CssClass="validator-error" Display="Dynamic" />
+                </div>
             </div>
         </div>
     </div>
