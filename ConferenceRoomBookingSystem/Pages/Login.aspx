@@ -20,6 +20,13 @@
                 <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUsername"
                     ErrorMessage="Wprowadź login" CssClass="validator-error" Display="Dynamic" />
             </div>
+
+            <div class="form-group">
+                <label class="form-label">Hasło:</label>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Wprowadź hasło" />
+                <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword"
+                    ErrorMessage="Wprowadź hasło" CssClass="validator-error" Display="Dynamic" />
+            </div>
         </div>
     </div>
 </asp:Content>
