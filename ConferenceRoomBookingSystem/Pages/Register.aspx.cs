@@ -18,6 +18,11 @@ namespace ConferenceRoomBookingSystem.Pages
             if (Page.IsValid)
             {
                 var repo = new UsersRepository();
+                if (repo.GetUserByUsername(txtUsername.Text.Trim()) != null)
+                {
+                    ShowMessage("Użytkownik o takiej nazwie już istnieje.", "danger");
+                    return;
+                }
                 
             }
         }
