@@ -12,5 +12,7 @@
             <h2 class="auth-title">Rejestracja nowego użytkownika</h2>
         </div>
     
+        <div class="auth-form">
+        </div>
     </div>
 </asp:Content>
