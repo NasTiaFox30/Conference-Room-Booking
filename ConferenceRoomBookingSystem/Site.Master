@@ -257,6 +257,12 @@
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/MyBookings.aspx" Text="My bookings" CssClass="navbar-link" />
             </div>
    
+            <asp:PlaceHolder ID="phGuest" runat="server">
+                <div class="navbar-user">
+                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Login.aspx" Text="Zaloguj się" CssClass="navbar-link" />
+                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Register.aspx" Text="Zarejestruj się" CssClass="navbar-link" />
+                </div>
+            </asp:PlaceHolder>
         </div>
 
         <div class="container">
