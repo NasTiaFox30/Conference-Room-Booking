@@ -54,6 +54,11 @@
                 <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword"
                     ErrorMessage="Wymagane" CssClass="validator-error" Display="Dynamic" />
             </div>
+
+            <div class="auth-button-container">
+                <asp:Button ID="btnRegister" runat="server" Text="Zarejestruj się" OnClick="btnRegister_Click" CssClass="auth-button auth-button-success" />
+            </div>
+
             <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false" />
 
         </div>
