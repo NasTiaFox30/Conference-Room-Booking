@@ -31,6 +31,8 @@
             <div class="auth-button-container">
                 <asp:Button ID="btnLogin" runat="server" Text="Zaloguj się" OnClick="btnLogin_Click" CssClass="auth-button auth-button-primary" />
             </div>
+
+            <asp:Label ID="lblMessage" runat="server" CssClass="alert alert-danger" Visible="false" />
         </div>
     </div>
 </asp:Content>
