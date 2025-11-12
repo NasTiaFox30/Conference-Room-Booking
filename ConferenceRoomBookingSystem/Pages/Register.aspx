@@ -13,6 +13,12 @@
         </div>
     
         <div class="auth-form">
+            <div class="form-group">
+                <label class="form-label">Login:</label>
+                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" />
+                <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUsername"
+                    ErrorMessage="Pole wymagane" CssClass="validator-error" Display="Dynamic" />
+            </div>
         </div>
     </div>
 </asp:Content>
