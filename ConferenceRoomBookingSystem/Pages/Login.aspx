@@ -8,7 +8,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="auth-container">
-    
+
         <div class="auth-header">
             <h2 class="auth-title">Logowanie do systemu</h2>
         </div>
