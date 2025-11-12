@@ -48,6 +48,12 @@
                 <asp:TextBox ID="txtDepartment" runat="server" CssClass="form-control" />
             </div>
 
+            <div class="form-group">
+                <label class="form-label">Hasło:</label>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" />
+                <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword"
+                    ErrorMessage="Wymagane" CssClass="validator-error" Display="Dynamic" />
+            </div>
             <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false" />
 
         </div>
