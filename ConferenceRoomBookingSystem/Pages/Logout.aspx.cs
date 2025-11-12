@@ -30,6 +30,11 @@ namespace ConferenceRoomBookingSystem.Pages
                     Response.Cookies[".ASPXAUTH"].Value = string.Empty;
                     Response.Cookies[".ASPXAUTH"].Expires = DateTime.Now.AddMonths(-20);
                 }
+
+                // Clear Cache
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+                Response.Cache.SetNoStore();
             catch (Exception)
             {
 
