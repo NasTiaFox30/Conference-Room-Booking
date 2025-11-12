@@ -12,5 +12,8 @@
         <div class="auth-header">
             <h2 class="auth-title">Logowanie do systemu</h2>
         </div>
+
+        <div class="auth-form">
+        </div>
     </div>
 </asp:Content>
