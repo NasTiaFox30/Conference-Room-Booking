@@ -23,7 +23,7 @@
 
         <!-- Desktop Table -->
         <asp:GridView ID="gvMyBookings" runat="server" AutoGenerateColumns="false" 
-            CssClass="bookings-table" OnRowCommand="gvMyBookings_RowCommand"
+            CssClass="bookings-table desktop-view" OnRowCommand="gvMyBookings_RowCommand"
             EmptyDataText="Nie masz rezerwacji.">
             <Columns>
                 <asp:BoundField DataField="RoomName" HeaderText="Sala" />
