@@ -1,0 +1,114 @@
+﻿.booking-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 140px);
+}
+
+.booking-details-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.booking-details-title {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.booking-details-card {
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+    .booking-details-card h3 {
+        color: var(--text-color);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+
+.booking-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+    .booking-details-grid div {
+        padding: 1rem;
+        background-color: var(--light-color);
+        border-radius: 4px;
+    }
+
+    .booking-details-grid strong {
+        color: #555;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+    }
+
+.booking-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+    .booking-section strong {
+        color: #555;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+.booking-created-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+    border-left: 3px solid var(--info-color);
+}
+
+.booking-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .booking-details-container {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .booking-details-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .booking-details-card {
+        padding: 1.5rem;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .booking-actions .btn {
+            width: 100%;
+            max-width: 250px;
+        }
+}

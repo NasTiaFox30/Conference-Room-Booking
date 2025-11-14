@@ -1,0 +1,98 @@
+﻿.my-bookings-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.my-bookings-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.my-bookings-title {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.booking-filter {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+    .booking-filter select {
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: white;
+    }
+
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .bookings-table th {
+        background-color: var(--light-color);
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-color);
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .bookings-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .bookings-table tr:hover {
+        background-color: #f9f9f9;
+    }
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.empty-bookings {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-style: italic;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+    .my-bookings-container {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .bookings-table {
+        font-size: 0.875rem;
+    }
+
+        .bookings-table th,
+        .bookings-table td {
+            padding: 0.75rem 0.5rem;
+        }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+        .action-buttons .btn {
+            width: 100%;
+        }
+}

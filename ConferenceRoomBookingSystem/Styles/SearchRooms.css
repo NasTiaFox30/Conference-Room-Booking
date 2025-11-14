@@ -1,0 +1,160 @@
+﻿.search-rooms-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.search-rooms-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-rooms-title {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.search-form {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.search-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.equipment-section {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 4px;
+}
+
+.equipment-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.equipment-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.equipment-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-button {
+    padding: 0.75rem 2rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .search-button:hover {
+        background-color: #0056b3;
+    }
+
+.rooms-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+    .rooms-table th {
+        background-color: var(--light-color);
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-color);
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .rooms-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .rooms-table tr:hover {
+        background-color: #f9f9f9;
+    }
+
+.equipment-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.book-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .book-button:hover {
+        background-color: #218838;
+    }
+
+.no-rooms-message {
+    padding: 2rem;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .search-rooms-container {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .search-form {
+        padding: 1.5rem;
+    }
+
+    .search-filters-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .equipment-checkboxes {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .rooms-table {
+        font-size: 0.875rem;
+    }
+
+    .equipment-badges {
+        justify-content: center;
+    }
+}
