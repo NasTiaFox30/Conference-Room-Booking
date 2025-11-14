@@ -35,6 +35,7 @@
     border-collapse: collapse;
     background-color: white;
     box-shadow: var(--shadow);
+     border: none;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -45,14 +46,20 @@
         text-align: left;
         font-weight: 600;
         color: var(--text-color);
+        border-block: none;
+        border: 2px solid var(--border-color);
+        border-top: none;
         border-bottom: 2px solid var(--border-color);
     }
 
     .bookings-table.desktop-view td {
         padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
     }
 
     .bookings-table.desktop-view tr:hover {
+        background-color: #f9f9f9;
     }
         border-bottom: 1px solid var(--border-color);
     }
