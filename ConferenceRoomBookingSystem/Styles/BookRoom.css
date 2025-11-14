@@ -15,6 +15,12 @@
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
+.bookroom-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
 .bookroom-buttons {
     display: flex;
     gap: 1rem;
