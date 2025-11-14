@@ -37,6 +37,25 @@
     background: white;
     border-radius: 4px;
 }
+
+.equipment-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.equipment-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.equipment-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 .book-button {
     padding: 0.5rem 1rem;
     background-color: var(--success-color);
