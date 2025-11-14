@@ -48,5 +48,14 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+
+        <!-- Mobile Cards -->
+        <div class="mobile-bookings-cards mobile-view">
+            <asp:Repeater ID="rptMobileBookings" runat="server" OnItemCommand="rptMobileBookings_ItemCommand">
+                
+            </asp:Repeater>
+            <asp:Label ID="lblNoBookingsMobile" runat="server" Text="Nie masz rezerwacji." 
+                CssClass="empty-bookings mobile-view" Visible="false"></asp:Label>
+        </div>
     </div>
 </asp:Content>
