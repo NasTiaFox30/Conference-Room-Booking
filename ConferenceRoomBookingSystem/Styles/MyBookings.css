@@ -29,7 +29,8 @@
         background-color: white;
     }
 
-.bookings-table {
+/* Desktop Table */
+.bookings-table.desktop-view {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
@@ -38,7 +39,7 @@
     overflow: hidden;
 }
 
-    .bookings-table th {
+    .bookings-table.desktop-view th {
         background-color: var(--light-color);
         padding: 1rem;
         text-align: left;
@@ -47,8 +48,12 @@
         border-bottom: 2px solid var(--border-color);
     }
 
-    .bookings-table td {
+    .bookings-table.desktop-view td {
         padding: 1rem;
+    }
+
+    .bookings-table.desktop-view tr:hover {
+    }
         border-bottom: 1px solid var(--border-color);
     }
 
