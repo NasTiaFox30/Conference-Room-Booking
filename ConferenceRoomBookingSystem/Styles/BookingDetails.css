@@ -36,6 +36,27 @@
         padding-bottom: 0.5rem;
     }
 
+.booking-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+    .booking-details-grid div {
+        padding: 1rem;
+        background-color: var(--light-color);
+        border-radius: 4px;
+    }
+
+    .booking-details-grid strong {
+        color: #555;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+    }
+
 .booking-section {
     margin: 1rem 0;
     padding: 1rem;
