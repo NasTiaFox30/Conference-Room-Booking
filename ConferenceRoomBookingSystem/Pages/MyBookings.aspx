@@ -21,6 +21,7 @@
             </asp:DropDownList>
         </div>
 
+        <!-- Desktop Table -->
         <asp:GridView ID="gvMyBookings" runat="server" AutoGenerateColumns="false" 
             CssClass="bookings-table" OnRowCommand="gvMyBookings_RowCommand"
             EmptyDataText="Nie masz rezerwacji.">
