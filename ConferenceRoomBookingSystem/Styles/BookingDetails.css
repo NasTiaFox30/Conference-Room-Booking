@@ -17,6 +17,24 @@
     margin-bottom: 0.5rem;
 }
 
+.booking-details-card {
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+    .booking-details-card h3 {
+        color: var(--text-color);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
 .booking-created-section {
     margin: 1rem 0;
     padding: 1rem;
