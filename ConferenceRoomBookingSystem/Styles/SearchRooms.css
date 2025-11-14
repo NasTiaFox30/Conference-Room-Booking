@@ -129,3 +129,32 @@
     text-align: center;
     margin: 2rem 0;
 }
+
+@media (max-width: 768px) {
+    .search-rooms-container {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .search-form {
+        padding: 1.5rem;
+    }
+
+    .search-filters-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .equipment-checkboxes {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .rooms-table {
+        font-size: 0.875rem;
+    }
+
+    .equipment-badges {
+        justify-content: center;
+    }
+}
