@@ -25,6 +25,10 @@ namespace ConferenceRoomBookingSystem.Pages
             // Bind desktop grid view
             gvMyBookings.DataSource = bookings;
             gvMyBookings.DataBind();
+
+            // Bind mobile repeater
+            rptMobileBookings.DataSource = bookings;
+            rptMobileBookings.DataBind();
         }
 
         protected void ddlStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
