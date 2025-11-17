@@ -52,7 +52,9 @@
         <!-- Mobile Cards -->
         <div class="mobile-bookings-cards mobile-view">
             <asp:Repeater ID="rptMobileBookings" runat="server" OnItemCommand="rptMobileBookings_ItemCommand">
+                <ItemTemplate>
                 
+                </ItemTemplate>
             </asp:Repeater>
             <asp:Label ID="lblNoBookingsMobile" runat="server" Text="Nie masz rezerwacji." 
                 CssClass="empty-bookings mobile-view" Visible="false"></asp:Label>
