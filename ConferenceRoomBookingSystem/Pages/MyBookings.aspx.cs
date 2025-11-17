@@ -50,17 +50,14 @@ namespace ConferenceRoomBookingSystem.Pages
             var bookingRepo = new BookingRepository();
             if (bookingRepo.CancelBooking(bookingId))
             {
-                // Успішне скасування
                 LoadMyBookings();
             }
             else
             {
-                // Помилка скасування
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Помилка при скасуванні бронювання');", true);
             }
         }
 
-        // ВИПРАВЛЕНО: метод тепер приймає окремі параметри замість об'єкта
         public bool CanCancelBooking(object status, object startTime)
         {
             if (status == null || startTime == null)
@@ -70,7 +67,6 @@ namespace ConferenceRoomBookingSystem.Pages
             if (statusStr != "Confirmed")
                 return false;
 
-            // Дозволити скасування тільки якщо до початку більше 24 годин
             DateTime start = DateTime.Parse(startTime.ToString());
             return start > DateTime.Now.AddHours(24);
         }
