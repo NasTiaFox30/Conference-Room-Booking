@@ -58,7 +58,22 @@
                             <h3 class="room-name"><%# Eval("RoomName") %></h3>
                             <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
                         </div>
-                
+                        <div class="card-body">
+                            <div class="booking-info">
+                                <div class="info-item">
+                                    <span class="info-label">Tytuł:</span>
+                                    <span class="info-value"><%# Eval("Title") %></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Początek:</span>
+                                    <span class="info-value"><%# FormatDate(Eval("StartTime")) %></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Koniec:</span>
+                                    <span class="info-value"><%# FormatDate(Eval("EndTime")) %></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
