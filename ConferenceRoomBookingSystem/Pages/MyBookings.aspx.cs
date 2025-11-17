@@ -41,7 +41,15 @@ namespace ConferenceRoomBookingSystem.Pages
 
         protected void gvMyBookings_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "CancelBooking")
+            HandleBookingCommand(e.CommandName, e.CommandArgument);
+        }
+
+        protected void rptMobileBookings_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            HandleBookingCommand(e.CommandName, e.CommandArgument);
+        }
+
+        private void HandleBookingCommand(string commandName, object commandArgument)
             {
                 int bookingId = Convert.ToInt32(e.CommandArgument);
             if (commandName == "CancelBooking")
