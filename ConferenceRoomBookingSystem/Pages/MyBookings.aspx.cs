@@ -29,6 +29,9 @@ namespace ConferenceRoomBookingSystem.Pages
             // Bind mobile repeater
             rptMobileBookings.DataSource = bookings;
             rptMobileBookings.DataBind();
+
+            // Show/hide empty message for mobile
+            lblNoBookingsMobile.Visible = bookings.Count == 0;
         }
 
         protected void ddlStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
