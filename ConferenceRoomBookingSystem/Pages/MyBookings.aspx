@@ -53,7 +53,13 @@
         <div class="mobile-bookings-cards mobile-view">
             <asp:Repeater ID="rptMobileBookings" runat="server" OnItemCommand="rptMobileBookings_ItemCommand">
                 <ItemTemplate>
+                    <div class="booking-card">
+                        <div class="card-header">
+                            <h3 class="room-name"><%# Eval("RoomName") %></h3>
+                            <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
+                        </div>
                 
+                    </div>
                 </ItemTemplate>
             </asp:Repeater>
             <asp:Label ID="lblNoBookingsMobile" runat="server" Text="Nie masz rezerwacji." 
