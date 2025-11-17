@@ -74,6 +74,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card-actions">
+                            <asp:Button ID="btnCancelMobile" runat="server" Text="Anuluj" 
+                                CommandName="CancelBooking" 
+                                CommandArgument='<%# Eval("BookingId") %>'
+                                CssClass="btn btn-warning btn-sm" 
+                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' />
+                            <asp:Button ID="btnDetailsMobile" runat="server" Text="Szczegóły" 
+                                CommandName="ViewDetails" 
+                                CommandArgument='<%# Eval("BookingId") %>'
+                                CssClass="btn btn-info btn-sm" />
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
