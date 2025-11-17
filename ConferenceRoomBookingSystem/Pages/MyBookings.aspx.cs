@@ -44,11 +44,14 @@ namespace ConferenceRoomBookingSystem.Pages
             if (e.CommandName == "CancelBooking")
             {
                 int bookingId = Convert.ToInt32(e.CommandArgument);
+            if (commandName == "CancelBooking")
+            {
+                int bookingId = Convert.ToInt32(commandArgument);
                 CancelBooking(bookingId);
             }
-            else if (e.CommandName == "ViewDetails")
+            else if (commandName == "ViewDetails")
             {
-                int bookingId = Convert.ToInt32(e.CommandArgument);
+                int bookingId = Convert.ToInt32(commandArgument);
                 Response.Redirect($"~/Pages/BookingDetails.aspx?bookingId={bookingId}");
             }
         }
