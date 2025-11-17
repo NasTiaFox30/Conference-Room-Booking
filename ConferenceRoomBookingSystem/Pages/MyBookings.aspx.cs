@@ -22,6 +22,7 @@ namespace ConferenceRoomBookingSystem.Pages
             var userId = GetCurrentUserId();
             var bookings = bookingRepo.GetUserBookings(userId, ddlStatusFilter.SelectedValue);
 
+            // Bind desktop grid view
             gvMyBookings.DataSource = bookings;
             gvMyBookings.DataBind();
         }
