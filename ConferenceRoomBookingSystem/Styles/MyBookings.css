@@ -66,6 +66,19 @@
 .mobile-bookings-cards {
     display: none;
 }
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .booking-card:active {
+        transform: scale(0.98);
+    }
         border-bottom: 1px solid var(--border-color);
     }
 
