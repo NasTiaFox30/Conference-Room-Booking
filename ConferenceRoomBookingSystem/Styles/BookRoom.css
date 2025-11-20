@@ -202,6 +202,8 @@
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+/* Tablet and smaller desktop */
 @media (max-width: 968px) {
     .bookroom-content {
         grid-template-columns: 1fr;
@@ -210,7 +212,12 @@
 
     .room-details-card {
         position: static;
+        order: -1;
     }
+
+    .bookroom-title {
+        font-size: 1.75rem;
+}
 }
 
 @media (max-width: 768px) {
