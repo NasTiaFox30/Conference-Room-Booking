@@ -61,6 +61,11 @@
     .bookings-table.desktop-view tr:hover {
         background-color: #f9f9f9;
     }
+
+/* Mobile Cards */
+.mobile-bookings-cards {
+    display: none;
+}
         border-bottom: 1px solid var(--border-color);
     }
 
