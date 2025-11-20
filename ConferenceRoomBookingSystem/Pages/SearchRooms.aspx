@@ -64,7 +64,7 @@
                 <asp:TemplateField HeaderText="Wyposażenie">
                     <ItemTemplate>
                         <div class="equipment-badges">
-                            <%# GetEquipmentText(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
+                            <%# GetEquipmentBadges(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
                         </div>
                     </ItemTemplate>
                 </asp:TemplateField>
