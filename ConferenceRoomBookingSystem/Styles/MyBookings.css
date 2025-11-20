@@ -34,10 +34,10 @@
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-    box-shadow: var(--shadow);
+     box-shadow: var(--shadow); 
      border: none;
-    border-radius: 8px;
-    overflow: hidden;
+     border-radius: 8px; 
+     overflow: hidden; 
 }
 
     .bookings-table.desktop-view th {
@@ -85,7 +85,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 1rem;
-        border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     background: var(--light-color);
 }
 
@@ -117,11 +117,11 @@
 .status-Pending {
     background: #fff3cd;
     color: #856404;
-    }
+}
 
 .card-body {
     padding: 1rem;
-    }
+}
 
 .booking-info {
     display: flex;
@@ -189,16 +189,16 @@
 
     .desktop-view {
         display: none !important;
-        }
+    }
 
     .mobile-view {
         display: block !important;
     }
 
     .booking-filter select {
-            width: 100%;
+        width: 100%;
         max-width: 280px;
-        }
+    }
 }
 
 @media (max-width: 769px) {
