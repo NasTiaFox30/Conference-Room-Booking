@@ -109,6 +109,16 @@
     gap: 0.25rem;
 }
 
+.equipment-badge {
+    padding: 0.35rem 0.75rem;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #bbdefb;
+}
+
 .book-button {
     padding: 0.6rem 1.2rem;
     background-color: var(--success-color);
