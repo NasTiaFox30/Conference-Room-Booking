@@ -54,6 +54,7 @@
                 OnClick="btnSearch_Click" CssClass="search-button btn btn-primary" />
         </div>
 
+        <!-- Desktop Table -->
         <asp:GridView ID="gvAvailableRooms" runat="server" AutoGenerateColumns="false" 
             CssClass="rooms-table" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
             <Columns>
