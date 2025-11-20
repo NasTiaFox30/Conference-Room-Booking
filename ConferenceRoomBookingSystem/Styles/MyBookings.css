@@ -119,8 +119,8 @@
     color: #856404;
     }
 
-    .bookings-table tr:hover {
-        background-color: #f9f9f9;
+.card-body {
+    padding: 1rem;
     }
 
 .action-buttons {
