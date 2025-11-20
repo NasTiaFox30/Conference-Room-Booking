@@ -31,8 +31,10 @@ namespace ConferenceRoomBookingSystem.Pages
             rptMobileBookings.DataSource = bookings;
             rptMobileBookings.DataBind();
 
-            // Show/hide empty message for mobile
-            lblNoBookingsMobile.Visible = bookings.Count == 0;
+            // Show/hide empty message
+            bool hasBookings = (bookings != null && bookings.Count > 0);
+            gvMyBookings.Visible = hasBookings;
+            lblNoBookings.Visible = !hasBookings;
         }
 
         protected void ddlStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
