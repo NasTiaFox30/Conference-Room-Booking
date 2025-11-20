@@ -117,6 +117,7 @@
     }
 
 /* Desktop Table */
+.rooms-table.desktop-view {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
