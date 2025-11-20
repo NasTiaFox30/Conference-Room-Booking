@@ -220,6 +220,7 @@
 }
 }
 
+/* Mobile devices */
 @media (max-width: 768px) {
     .bookroom-container {
         padding: 1rem;
