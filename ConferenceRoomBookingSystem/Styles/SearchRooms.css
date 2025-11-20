@@ -231,6 +231,10 @@
     border: 1px solid #bbdefb;
     white-space: nowrap;
 }
+
+.card-body {
+    padding: 1.25rem;
+}
 .card-actions {
     padding: 1.25rem;
     border-top: 1px solid var(--border-color);
