@@ -184,6 +184,11 @@
         transform: translateY(-1px);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
+/* Mobile Cards */
+.mobile-rooms-cards {
+    display: none;
+}
     }
 
 .no-rooms-message {
