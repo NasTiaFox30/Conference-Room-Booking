@@ -100,6 +100,24 @@
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
 .time-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
