@@ -56,7 +56,7 @@
 
         <!-- Desktop Table -->
         <asp:GridView ID="gvAvailableRooms" runat="server" AutoGenerateColumns="false" 
-            CssClass="rooms-table" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
+            CssClass="rooms-table desktop-view" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
             <Columns>
                 <asp:BoundField DataField="RoomName" HeaderText="Nazwa sali" />
                 <asp:BoundField DataField="Capacity" HeaderText="Pojemność" />
