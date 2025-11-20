@@ -221,6 +221,16 @@
     line-height: 1.3;
 }
 
+.capacity-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+    white-space: nowrap;
+}
 .card-actions {
     padding: 1.25rem;
     border-top: 1px solid var(--border-color);
