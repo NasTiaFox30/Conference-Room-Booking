@@ -382,7 +382,37 @@
         padding: 0.75rem;
     }
 
-    .equipment-badges {
-        justify-content: center;
+    .search-form {
+        padding: 1.25rem;
+    }
+
+    .search-rooms-title {
+        font-size: 1.3rem;
+    }
+
+    .room-card {
+        margin-bottom: 0.75rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .capacity-badge {
+        align-self: flex-start;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .no-rooms-message {
+        padding: 2rem 1rem;
+        font-size: 1rem;
+        margin: 1.5rem 0;
+    }
     }
 }
