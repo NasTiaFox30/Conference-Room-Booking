@@ -359,6 +359,8 @@
     .card-actions {
         padding: 1rem;
     }
+
+    .room-name {
         font-size: 1.1rem;
     }
     }
