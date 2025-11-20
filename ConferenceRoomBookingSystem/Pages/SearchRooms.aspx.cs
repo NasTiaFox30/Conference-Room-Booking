@@ -68,6 +68,7 @@ namespace ConferenceRoomBookingSystem.Pages
 
             if (availableRooms.Any())
             {
+                // Bind desktop grid view
                 gvAvailableRooms.DataSource = availableRooms;
                 gvAvailableRooms.DataBind();
                 gvAvailableRooms.Visible = true;
