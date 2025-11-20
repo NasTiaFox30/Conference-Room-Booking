@@ -208,3 +208,25 @@
         display: block !important;
     }
 }
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .my-bookings-container {
+        margin: 0.5rem auto;
+        padding: 0.75rem;
+    }
+
+    .my-bookings-title {
+        font-size: 1.3rem;
+    }
+
+    .room-card {
+        margin-bottom: 0.75rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+}
