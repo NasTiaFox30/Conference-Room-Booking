@@ -72,6 +72,11 @@ namespace ConferenceRoomBookingSystem.Pages
                 gvAvailableRooms.DataSource = availableRooms;
                 gvAvailableRooms.DataBind();
                 gvAvailableRooms.Visible = true;
+
+                // Bind mobile repeater
+                rptMobileRooms.DataSource = availableRooms;
+                rptMobileRooms.DataBind();
+
                 lblNoRooms.Visible = false;
             }
             else
