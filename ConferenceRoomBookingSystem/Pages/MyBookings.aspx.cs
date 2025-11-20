@@ -50,7 +50,7 @@ namespace ConferenceRoomBookingSystem.Pages
         }
 
         private void HandleBookingCommand(string commandName, object commandArgument)
-            {
+        {
             if (commandName == "CancelBooking")
             {
                 int bookingId = Convert.ToInt32(commandArgument);
