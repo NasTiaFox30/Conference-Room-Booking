@@ -113,8 +113,12 @@ namespace ConferenceRoomBookingSystem.Pages
         {
             HandleBookCommand(e.CommandName, e.CommandArgument);
         }
+
+        private void HandleBookCommand(string commandName, object commandArgument)
+        {
+            if (commandName == "BookRoom")
             {
-                int roomId = Convert.ToInt32(e.CommandArgument);
+                int roomId = Convert.ToInt32(commandArgument);
                 Response.Redirect($"~/Pages/BookRoom.aspx?roomId={roomId}&date={txtDate.Text}&start={txtStartTime.Text}&end={txtEndTime.Text}");
             }
         }
