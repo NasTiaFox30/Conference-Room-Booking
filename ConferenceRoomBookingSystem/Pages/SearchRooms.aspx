@@ -79,6 +79,11 @@
             </Columns>
         </asp:GridView>
         
+        <!-- Mobile Cards -->
+        <div class="mobile-rooms-cards mobile-view">
+            
+        </div>
+
         <!-- No rooms message -->
         <asp:Label ID="lblNoRooms" runat="server" Text="Brak dostępnych sal spełniających podane kryteria." 
             Visible="false" CssClass="no-rooms-message"></asp:Label>
