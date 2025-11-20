@@ -106,7 +106,13 @@ namespace ConferenceRoomBookingSystem.Pages
 
         protected void gvAvailableRooms_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "BookRoom")
+            HandleBookCommand(e.CommandName, e.CommandArgument);
+        }
+
+        protected void rptMobileRooms_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            HandleBookCommand(e.CommandName, e.CommandArgument);
+        }
             {
                 int roomId = Convert.ToInt32(e.CommandArgument);
                 Response.Redirect($"~/Pages/BookRoom.aspx?roomId={roomId}&date={txtDate.Text}&start={txtStartTime.Text}&end={txtEndTime.Text}");
