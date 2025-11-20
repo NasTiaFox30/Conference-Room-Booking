@@ -368,6 +368,10 @@
         font-size: 0.95rem;
     }
 }
+
+@media (max-width: 769px) {
+    .mobile-view {
+        display: block !important;
 }
 }
     }
