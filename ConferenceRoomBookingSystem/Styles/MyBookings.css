@@ -195,7 +195,8 @@
         display: block !important;
     }
 
-        .action-buttons .btn {
+    .booking-filter select {
             width: 100%;
+        max-width: 280px;
         }
 }
