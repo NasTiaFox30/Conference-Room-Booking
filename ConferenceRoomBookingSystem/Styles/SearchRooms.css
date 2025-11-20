@@ -315,6 +315,7 @@
     box-shadow: var(--shadow);
 }
 
+/* Mobile adaptation */
 @media (max-width: 768px) {
     .search-rooms-container {
         margin: 1rem auto;
