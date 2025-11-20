@@ -139,7 +139,9 @@
 
     .rooms-table.desktop-view td {
         padding: 1rem;
-        border-bottom: 1px solid var(--border-color);
+        border: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
+        vertical-align: middle;
     }
 
     .rooms-table.desktop-view tr:hover {
