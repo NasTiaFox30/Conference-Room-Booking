@@ -378,7 +378,7 @@
 @media (max-width: 769px) {
     .mobile-view {
         display: block !important;
-}
+    }
 }
 
 /* Small mobile devices */
@@ -420,7 +420,7 @@
         font-size: 1rem;
         margin: 1.5rem 0;
     }
-    }
+}
 
 
 .search-button:disabled {
