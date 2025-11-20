@@ -64,6 +64,7 @@
 .room-details-value {
     color: #6c757d;
     font-size: 1rem;
+    line-height: 1.4;
 }
 
 .room-equipment {
@@ -88,6 +89,17 @@
     border: 1px solid var(--border-color);
 }
 
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
 .time-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
