@@ -204,6 +204,14 @@
         transform: scale(0.98);
     }
 
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--light-color);
+}
 .no-rooms-message {
     display: flex;
     flex-direction: column;
