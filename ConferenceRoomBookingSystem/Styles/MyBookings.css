@@ -79,7 +79,15 @@
     .booking-card:active {
         transform: scale(0.98);
     }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
         border-bottom: 1px solid var(--border-color);
+    background: var(--light-color);
+}
     }
 
     .bookings-table tr:hover {
