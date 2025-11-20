@@ -86,6 +86,24 @@ namespace ConferenceRoomBookingSystem.Pages
             }
         }
 
+        // Method for desktop view (badges)
+        public string GetEquipmentBadges(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
+        {
+            var equipment = new List<string>();
+
+            if (hasProjector != null && (bool)hasProjector)
+                equipment.Add("<span class='equipment-badge'>Projektor</span>");
+            if (hasWhiteboard != null && (bool)hasWhiteboard)
+                equipment.Add("<span class='equipment-badge'>Tablica</span>");
+            if (hasAudioSystem != null && (bool)hasAudioSystem)
+                equipment.Add("<span class='equipment-badge'>System audio</span>");
+            if (hasWiFi != null && (bool)hasWiFi)
+                equipment.Add("<span class='equipment-badge'>Wi-Fi</span>");
+
+            return string.Join(" ", equipment);
+        }
+
+        // Method for mobile view (text)
         public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
         {
             var equipment = new List<string>();
