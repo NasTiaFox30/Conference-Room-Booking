@@ -83,7 +83,32 @@
         <div class="mobile-rooms-cards mobile-view">
             <asp:Repeater ID="rptMobileRooms" runat="server" OnItemCommand="rptMobileRooms_ItemCommand">
                 <ItemTemplate>
-            
+                    <div class="room-card">
+                        <div class="card-header">
+                            <h3 class="room-name"><%# Eval("RoomName") %></h3>
+                            <span class="capacity-badge"><%# Eval("Capacity") %> os.</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="room-info">
+                                <div class="info-item">
+                                    <span class="info-label">Lokalizacja:</span>
+                                    <span class="info-value"><%# Eval("Location") %></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Wyposażenie:</span>
+                                    <span class="info-value equipment-value">
+                                        <%# GetEquipmentText(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <asp:Button ID="btnBookMobile" runat="server" Text="Zarezerwuj" 
+                                CommandName="BookRoom" 
+                                CommandArgument='<%# Eval("RoomId") %>'
+                                CssClass="btn btn-success btn-sm" />
+                        </div>
+                    </div>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
