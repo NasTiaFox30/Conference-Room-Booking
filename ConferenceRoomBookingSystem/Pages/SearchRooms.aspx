@@ -81,7 +81,11 @@
         
         <!-- Mobile Cards -->
         <div class="mobile-rooms-cards mobile-view">
+            <asp:Repeater ID="rptMobileRooms" runat="server" OnItemCommand="rptMobileRooms_ItemCommand">
+                <ItemTemplate>
             
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
 
         <!-- No rooms message -->
