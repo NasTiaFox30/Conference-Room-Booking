@@ -78,7 +78,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 rptMobileRooms.DataBind();
 
                 lblNoRooms.Visible = false;
-            }
+                }
             else
             {
                 gvAvailableRooms.Visible = false;

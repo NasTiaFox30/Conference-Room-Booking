@@ -78,7 +78,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        
+
         <!-- Mobile Cards -->
         <div class="mobile-rooms-cards mobile-view">
             <asp:Repeater ID="rptMobileRooms" runat="server" OnItemCommand="rptMobileRooms_ItemCommand">

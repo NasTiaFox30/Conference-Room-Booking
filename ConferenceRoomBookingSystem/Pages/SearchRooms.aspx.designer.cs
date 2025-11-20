@@ -105,6 +105,15 @@ namespace ConferenceRoomBookingSystem.Pages
         protected global::System.Web.UI.WebControls.GridView gvAvailableRooms;
 
         /// <summary>
+        /// rptMobileRooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptMobileRooms;
+
+        /// <summary>
         /// lblNoRooms control.
         /// </summary>
         /// <remarks>
