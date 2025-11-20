@@ -347,6 +347,18 @@
         padding: 1rem;
         font-size: 1.1rem;
     }
+
+    .card-header {
+        padding: 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-actions {
+        padding: 1rem;
+    }
         font-size: 1.1rem;
     }
     }
