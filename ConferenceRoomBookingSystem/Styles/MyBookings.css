@@ -134,6 +134,19 @@
     flex-direction: column;
     gap: 0.25rem;
 }
+
+.info-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
 .action-buttons {
     display: flex;
     gap: 0.5rem;
