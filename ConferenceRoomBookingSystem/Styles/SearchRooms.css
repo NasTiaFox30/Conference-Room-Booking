@@ -241,6 +241,13 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.equipment-value {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #555;
+}
+
 .card-actions {
     padding: 1.25rem;
     border-top: 1px solid var(--border-color);
