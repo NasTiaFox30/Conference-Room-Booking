@@ -87,8 +87,10 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:Label ID="lblNoBookingsMobile" runat="server" Text="Nie masz rezerwacji." 
-                CssClass="empty-bookings mobile-view" Visible="false"></asp:Label>
         </div>
+
+        <!-- No bookings message -->
+        <asp:Label ID="lblNoBookings" runat="server" Text="Nie masz rezerwacji." 
+            CssClass="empty-bookings" Visible="false"></asp:Label>
     </div>
 </asp:Content>
