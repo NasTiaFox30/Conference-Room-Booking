@@ -322,6 +322,10 @@
         padding: 1rem;
     }
 
+    .search-rooms-title {
+        font-size: 1.5rem;
+    }
+
     .search-form {
         padding: 1.5rem;
     }
