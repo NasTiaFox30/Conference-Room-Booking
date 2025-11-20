@@ -88,6 +88,14 @@ namespace ConferenceRoomBookingSystem.Pages
             DateTime start = DateTime.Parse(startTime.ToString());
             return start > DateTime.Now.AddHours(24);
         }
+
+        // Helper method for formatting dates in mobile view
+        public string FormatDate(object dateTime)
+        {
+            if (dateTime == null) return string.Empty;
+            return Convert.ToDateTime(dateTime).ToString("dd.MM.yyyy HH:mm");
+        }
+
         private int GetCurrentUserId()
         {
             if (Session["UserId"] == null)
