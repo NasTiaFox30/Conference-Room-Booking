@@ -123,6 +123,17 @@
     padding: 1rem;
     }
 
+.booking-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
 .action-buttons {
     display: flex;
     gap: 0.5rem;
