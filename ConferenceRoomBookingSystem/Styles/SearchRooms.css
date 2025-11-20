@@ -428,4 +428,12 @@
     cursor: not-allowed;
     transform: none !important;
 }
+
+/* Focus states */
+.form-control:focus,
+.search-button:focus,
+.book-button:focus,
+.card-actions .btn:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
