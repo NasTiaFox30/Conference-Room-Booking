@@ -79,6 +79,7 @@
             </Columns>
         </asp:GridView>
         
+        <!-- No rooms message -->
         <asp:Label ID="lblNoRooms" runat="server" Text="Brak dostępnych sal spełniających podane kryteria." 
             Visible="false" CssClass="no-rooms-message"></asp:Label>
     </div>
