@@ -340,8 +340,14 @@
         gap: 0.75rem;
     }
 
-    .rooms-table {
-        font-size: 0.875rem;
+    .desktop-view {
+        display: none !important;
+    }
+
+    .mobile-view {
+        display: block !important;
+    }
+
     .search-button {
         width: 100%;
         padding: 1rem;
