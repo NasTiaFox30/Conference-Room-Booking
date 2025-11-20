@@ -374,6 +374,12 @@
         display: block !important;
 }
 }
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .search-rooms-container {
+        margin: 0.5rem auto;
+        padding: 0.75rem;
     }
 
     .equipment-badges {
