@@ -78,13 +78,11 @@ namespace ConferenceRoomBookingSystem.Pages
                 rptMobileRooms.DataBind();
 
                 lblNoRooms.Visible = false;
-                lblNoRoomsMobile.Visible = false;
             }
             else
             {
                 gvAvailableRooms.Visible = false;
                 lblNoRooms.Visible = true;
-                lblNoRoomsMobile.Visible = true;
             }
         }
 
