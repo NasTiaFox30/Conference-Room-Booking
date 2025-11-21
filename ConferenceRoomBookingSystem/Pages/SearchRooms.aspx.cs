@@ -28,6 +28,22 @@ namespace ConferenceRoomBookingSystem.Pages
             txtEndTime.Attributes["min"] = "05:30";
             txtEndTime.Attributes["max"] = "23:00";
         }
+
+        private void UpdateEndTime()
+        {
+            if (!string.IsNullOrEmpty(txtStartTime.Text))
+            {
+                TimeSpan startTime = TimeSpan.Parse(txtStartTime.Text);
+                TimeSpan endTime = startTime.Add(new TimeSpan(0, 30, 0));
+
+                // Check EndTime not later than 23:00
+                if (endTime > new TimeSpan(23, 0, 0))
+                    endTime = new TimeSpan(23, 0, 0); 
+
+                txtEndTime.Text = endTime.ToString(@"hh\:mm");
+            }
+        }
+
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SearchAvailableRooms();
