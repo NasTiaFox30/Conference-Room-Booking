@@ -134,7 +134,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 rptMobileRooms.DataSource = availableRooms;
                 rptMobileRooms.DataBind();
 
-                lblNoRooms.Visible = false;
+                ShowMessage($"Znaleziono {availableRooms.Count} dostępnych sal.", "success");
                 }
             else
             {
