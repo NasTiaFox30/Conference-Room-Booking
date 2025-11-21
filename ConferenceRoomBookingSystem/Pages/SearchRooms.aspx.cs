@@ -121,6 +121,8 @@ namespace ConferenceRoomBookingSystem.Pages
                 availableRooms.Add(room);
             }
 
+        private void DisplaySearchResults(List<ConferenceRoom> availableRooms)
+        {
             if (availableRooms.Any())
             {
                 // Bind desktop grid view
@@ -136,8 +138,8 @@ namespace ConferenceRoomBookingSystem.Pages
                 }
             else
             {
-            }
         }
+            }
 
         // Method for desktop view (badges)
         public string GetEquipmentBadges(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
