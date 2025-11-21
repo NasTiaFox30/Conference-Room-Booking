@@ -1,7 +1,6 @@
 ﻿.bookroom-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 .bookroom-header {
@@ -223,7 +222,6 @@
 /* Mobile devices */
 @media (max-width: 768px) {
     .bookroom-container {
-        padding: 1rem;
         margin: 0.5rem auto;
     }
 
@@ -271,10 +269,6 @@
 
 /* Small mobile devices */
 @media (max-width: 480px) {
-    .bookroom-container {
-        padding: 0.75rem;
-        margin: 0.25rem auto;
-    }
 
     .bookroom-title {
         font-size: 1.3rem;
