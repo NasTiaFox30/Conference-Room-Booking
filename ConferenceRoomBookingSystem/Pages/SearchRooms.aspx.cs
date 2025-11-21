@@ -136,8 +136,6 @@ namespace ConferenceRoomBookingSystem.Pages
                 }
             else
             {
-                gvAvailableRooms.Visible = false;
-                lblNoRooms.Visible = true;
             }
         }
 
