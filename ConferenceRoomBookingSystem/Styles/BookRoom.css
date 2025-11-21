@@ -268,5 +268,48 @@
         margin-bottom: 1.25rem;
     }
 }
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .bookroom-container {
+        padding: 0.75rem;
+        margin: 0.25rem auto;
+    }
+
+    .bookroom-title {
+        font-size: 1.3rem;
+    }
+
+    .room-details-card {
+        padding: 1.25rem;
+    }
+
+    .room-details-title {
+        font-size: 1.2rem;
+    }
+
+    .bookroom-form {
+        padding: 1.25rem;
+    }
+
+    .form-control {
+        padding: 0.625rem;
+        font-size: 0.95rem;
+    }
+
+    .bookroom-btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .equipment-badges {
+        gap: 0.375rem;
+}
+
+    .equipment-badge {
+        padding: 0.25rem 0.625rem;
+        font-size: 0.75rem;
+    }
+}
     }
 }
