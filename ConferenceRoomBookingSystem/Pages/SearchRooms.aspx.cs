@@ -15,10 +15,13 @@ namespace ConferenceRoomBookingSystem.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
+                InitializeSearchForm();
+        }
 
             }
         }
+
+        
 
         private void SetTimeConstraints()
         {
