@@ -16,9 +16,7 @@ namespace ConferenceRoomBookingSystem.Pages
         {
             if (!IsPostBack)
             {
-                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                txtStartTime.Text = "09:00";
-                txtEndTime.Text = "10:00";
+
             }
         }
 
