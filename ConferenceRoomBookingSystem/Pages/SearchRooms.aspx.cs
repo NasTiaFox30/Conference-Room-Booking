@@ -20,6 +20,14 @@ namespace ConferenceRoomBookingSystem.Pages
             }
         }
 
+        private void SetTimeConstraints()
+        {
+            // Time reservation rules:
+            txtStartTime.Attributes["min"] = "05:00";
+            txtStartTime.Attributes["max"] = "22:30";
+            txtEndTime.Attributes["min"] = "05:30";
+            txtEndTime.Attributes["max"] = "23:00";
+        }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SearchAvailableRooms();
