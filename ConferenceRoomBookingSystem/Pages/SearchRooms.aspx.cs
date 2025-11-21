@@ -18,11 +18,39 @@ namespace ConferenceRoomBookingSystem.Pages
                 InitializeSearchForm();
         }
 
+        private void InitializeSearchForm()
+        {
+            DateTime now = DateTime.Now;
+            DateTime nowTime = now.AddHours(6); // 6 hours before start
+
+            // Set min date (today)
+            txtDate.Text = now.ToString("yyyy-MM-dd");
+            txtDate.Attributes["min"] = now.ToString("yyyy-MM-dd");
+
+            // If current time + 6 is more than 22:30 (today and next days)
+            if ((nowTime.Date == now.Date && nowTime.TimeOfDay > new TimeSpan(22, 30, 0)) || nowTime.Date > now.Date)
+            {
+                // Move to next day
+                DateTime nextDay = (nowTime.Date > now.Date) ? nowTime.Date : now.AddDays(1).Date;
+                txtDate.Text = nextDay.ToString("yyyy-MM-dd");
+                txtStartTime.Text = "05:00"; 
+                txtEndTime.Text = "05:30";
             }
+            else
+            {
+                // Not earlier than  5:00
+                if (nowTime.Hour < 5)
+                    txtStartTime.Text = "05:00";
+                else
+                    txtStartTime.Text = nowTime.ToString("HH:mm");
+
+                // Automatically set end time +30 minutes
+                UpdateEndTime();
         }
 
+            SetTimeConstraints();
+        }
         
-
         private void SetTimeConstraints()
         {
             // Time reservation rules:
