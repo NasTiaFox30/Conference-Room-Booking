@@ -263,5 +263,10 @@
         min-width: 100%;
         padding: 0.75rem 1.5rem;
     }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+}
     }
 }
