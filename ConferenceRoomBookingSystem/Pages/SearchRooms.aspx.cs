@@ -10,6 +10,8 @@ namespace ConferenceRoomBookingSystem.Pages
 {
     public partial class SearchRooms : Page
     {
+        private DateTime _minBookingTime;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
