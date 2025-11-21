@@ -217,7 +217,7 @@
 
     .bookroom-title {
         font-size: 1.75rem;
-}
+    }
 }
 
 /* Mobile devices */
@@ -304,7 +304,7 @@
 
     .equipment-badges {
         gap: 0.375rem;
-}
+    }
 
     .equipment-badge {
         padding: 0.25rem 0.625rem;
