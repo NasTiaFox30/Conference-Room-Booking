@@ -68,11 +68,17 @@ namespace ConferenceRoomBookingSystem.Pages
 
             if (availableRooms.Any())
             {
+                // Bind desktop grid view
                 gvAvailableRooms.DataSource = availableRooms;
                 gvAvailableRooms.DataBind();
                 gvAvailableRooms.Visible = true;
+
+                // Bind mobile repeater
+                rptMobileRooms.DataSource = availableRooms;
+                rptMobileRooms.DataBind();
+
                 lblNoRooms.Visible = false;
-            }
+                }
             else
             {
                 gvAvailableRooms.Visible = false;
@@ -80,6 +86,24 @@ namespace ConferenceRoomBookingSystem.Pages
             }
         }
 
+        // Method for desktop view (badges)
+        public string GetEquipmentBadges(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
+        {
+            var equipment = new List<string>();
+
+            if (hasProjector != null && (bool)hasProjector)
+                equipment.Add("<span class='equipment-badge'>Projektor</span>");
+            if (hasWhiteboard != null && (bool)hasWhiteboard)
+                equipment.Add("<span class='equipment-badge'>Tablica</span>");
+            if (hasAudioSystem != null && (bool)hasAudioSystem)
+                equipment.Add("<span class='equipment-badge'>System audio</span>");
+            if (hasWiFi != null && (bool)hasWiFi)
+                equipment.Add("<span class='equipment-badge'>Wi-Fi</span>");
+
+            return string.Join(" ", equipment);
+        }
+
+        // Method for mobile view (text)
         public string GetEquipmentText(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)
         {
             var equipment = new List<string>();
@@ -98,9 +122,19 @@ namespace ConferenceRoomBookingSystem.Pages
 
         protected void gvAvailableRooms_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "BookRoom")
+            HandleBookCommand(e.CommandName, e.CommandArgument);
+        }
+
+        protected void rptMobileRooms_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            HandleBookCommand(e.CommandName, e.CommandArgument);
+        }
+
+        private void HandleBookCommand(string commandName, object commandArgument)
+        {
+            if (commandName == "BookRoom")
             {
-                int roomId = Convert.ToInt32(e.CommandArgument);
+                int roomId = Convert.ToInt32(commandArgument);
                 Response.Redirect($"~/Pages/BookRoom.aspx?roomId={roomId}&date={txtDate.Text}&start={txtStartTime.Text}&end={txtEndTime.Text}");
             }
         }

@@ -29,32 +29,124 @@
         background-color: white;
     }
 
-.bookings-table {
+/* Desktop Table */
+.bookings-table.desktop-view {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-    box-shadow: var(--shadow);
-    border-radius: 8px;
-    overflow: hidden;
+     box-shadow: var(--shadow); 
+     border: none;
+     border-radius: 8px; 
+     overflow: hidden; 
 }
 
-    .bookings-table th {
+    .bookings-table.desktop-view th {
         background-color: var(--light-color);
         padding: 1rem;
         text-align: left;
         font-weight: 600;
         color: var(--text-color);
+        border-block: none;
+        border: 2px solid var(--border-color);
+        border-top: none;
         border-bottom: 2px solid var(--border-color);
     }
 
-    .bookings-table td {
+    .bookings-table.desktop-view td {
         padding: 1rem;
-        border-bottom: 1px solid var(--border-color);
+        border: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
     }
 
-    .bookings-table tr:hover {
+    .bookings-table.desktop-view tr:hover {
         background-color: #f9f9f9;
     }
+
+/* Mobile Cards */
+.mobile-bookings-cards {
+    display: none;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .booking-card:active {
+        transform: scale(0.98);
+    }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--light-color);
+}
+
+.room-name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-Confirmed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-Cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-Pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.booking-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
 
 .action-buttons {
     display: flex;
@@ -62,13 +154,34 @@
     flex-wrap: wrap;
 }
 
+.card-actions {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.5rem;
+    background: #fafafa;
+}
+
+    .card-actions .btn {
+        flex: 1;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
 .empty-bookings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: #fafafa;
+    border-radius: 12px;
     text-align: center;
-    padding: 3rem;
-    color: #666;
-    font-style: italic;
-    background-color: white;
-    border-radius: 8px;
+    margin: 1rem auto;
+    font-weight: 500;
+    max-width: 600px;
+    min-height: 10px;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
 }
 
@@ -78,21 +191,49 @@
         padding: 1rem;
     }
 
-    .bookings-table {
-        font-size: 0.875rem;
+    .my-bookings-title {
+        font-size: 1.5rem;
     }
 
-        .bookings-table th,
-        .bookings-table td {
-            padding: 0.75rem 0.5rem;
-        }
+    .desktop-view {
+        display: none !important;
+    }
 
-    .action-buttons {
+    .mobile-view {
+        display: block !important;
+    }
+
+    .booking-filter select {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 769px) {
+
+    .mobile-view {
+        display: block !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .my-bookings-container {
+        margin: 0.5rem auto;
+        padding: 0.75rem;
+    }
+
+    .my-bookings-title {
+        font-size: 1.3rem;
+    }
+
+    .room-card {
+        margin-bottom: 0.75rem;
+    }
+
+    .card-header {
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.5rem;
     }
 
-        .action-buttons .btn {
-            width: 100%;
-        }
 }

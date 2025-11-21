@@ -54,8 +54,9 @@
                 OnClick="btnSearch_Click" CssClass="search-button btn btn-primary" />
         </div>
 
+        <!-- Desktop Table -->
         <asp:GridView ID="gvAvailableRooms" runat="server" AutoGenerateColumns="false" 
-            CssClass="rooms-table" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
+            CssClass="rooms-table desktop-view" Visible="false" OnRowCommand="gvAvailableRooms_RowCommand">
             <Columns>
                 <asp:BoundField DataField="RoomName" HeaderText="Nazwa sali" />
                 <asp:BoundField DataField="Capacity" HeaderText="Pojemność" />
@@ -63,7 +64,7 @@
                 <asp:TemplateField HeaderText="Wyposażenie">
                     <ItemTemplate>
                         <div class="equipment-badges">
-                            <%# GetEquipmentText(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
+                            <%# GetEquipmentBadges(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
                         </div>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -77,7 +78,42 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        
+
+        <!-- Mobile Cards -->
+        <div class="mobile-rooms-cards mobile-view">
+            <asp:Repeater ID="rptMobileRooms" runat="server" OnItemCommand="rptMobileRooms_ItemCommand">
+                <ItemTemplate>
+                    <div class="room-card">
+                        <div class="card-header">
+                            <h3 class="room-name"><%# Eval("RoomName") %></h3>
+                            <span class="capacity-badge"><%# Eval("Capacity") %> os.</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="room-info">
+                                <div class="info-item">
+                                    <span class="info-label">Lokalizacja:</span>
+                                    <span class="info-value"><%# Eval("Location") %></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Wyposażenie:</span>
+                                    <span class="info-value equipment-value">
+                                        <%# GetEquipmentText(Eval("HasProjector"), Eval("HasWhiteboard"), Eval("HasAudioSystem"), Eval("HasWiFi")) %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <asp:Button ID="btnBookMobile" runat="server" Text="Zarezerwuj" 
+                                CommandName="BookRoom" 
+                                CommandArgument='<%# Eval("RoomId") %>'
+                                CssClass="btn btn-success btn-sm" />
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+
+        <!-- No rooms message -->
         <asp:Label ID="lblNoRooms" runat="server" Text="Brak dostępnych sal spełniających podane kryteria." 
             Visible="false" CssClass="no-rooms-message"></asp:Label>
     </div>
