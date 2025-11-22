@@ -34,6 +34,7 @@ namespace ConferenceRoomBookingSystem.Pages
             // Show/hide empty message
             bool hasBookings = (bookings != null && bookings.Count > 0);
             gvMyBookings.Visible = hasBookings;
+            rptMobileBookings.Visible = hasBookings;
             lblNoBookings.Visible = !hasBookings;
         }
 
@@ -68,9 +69,28 @@ namespace ConferenceRoomBookingSystem.Pages
 
         private void CancelBooking(int bookingId)
         {
+            try
+            {
             var bookingRepo = new BookingRepository();
+
+                // Get info about reservation (for cancel)
+                var booking = bookingRepo.GetBookingById(bookingId);
+                if (booking == null)
+                {
+                    ShowMessage("Rezerwacja nie została znaleziona.", "danger");
+                    return;
+                }
+
+                // Check if user can cancel
+                if (!CanCancelBooking(booking.Status, booking.StartTime))
+                {
+                    ShowMessage("Nie można anulować tej rezerwacji. Możliwość anulowania wygasa na 2 godziny przed rozpoczęciem wydarzenia.", "danger");
+                    return;
+                }
+
             if (bookingRepo.CancelBooking(bookingId))
             {
+                    ShowMessage($"Rezerwacja sali {booking.RoomName} na {booking.StartTime:dd.MM.yyyy HH:mm} została anulowana.", "success");
                 LoadMyBookings();
             }
             else
@@ -78,6 +98,10 @@ namespace ConferenceRoomBookingSystem.Pages
                     ShowMessage("Wystąpił błąd podczas anulowania rezerwacji. Spróbuj ponownie.", "danger");
                 }
             }
+            catch (Exception ex)
+            {
+                ShowMessage($"Błąd: {ex.Message}", "danger");
+        }
         }
 
         public bool CanCancelBooking(object status, object startTime)
