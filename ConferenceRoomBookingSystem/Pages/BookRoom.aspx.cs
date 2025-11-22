@@ -66,6 +66,14 @@ namespace ConferenceRoomBookingSystem.Pages
 
             try
             {
+                if (!ValidateBookingParameters())
+                {
+                    return;
+                }
+
+                DateTime startTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingStart.Text);
+                DateTime endTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingEnd.Text);
+
                 var booking = new Booking
                 {
                     RoomId = roomId,
