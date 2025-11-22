@@ -60,6 +60,32 @@ namespace ConferenceRoomBookingSystem.Data
                 CreatedDate = Convert.ToDateTime(row["CreatedDate"])
             };
         }
+
+        public bool CreateRoom(ConferenceRoom room)
+        {
+            var query = @"
+                INSERT INTO ConferenceRooms 
+                (RoomName, Capacity, Location, Description, HasProjector, HasWhiteboard, HasAudioSystem, HasWiFi, IsActive, CreatedDate)
+                VALUES 
+                (@RoomName, @Capacity, @Location, @Description, @HasProjector, @HasWhiteboard, @HasAudioSystem, @HasWiFi, @IsActive, @CreatedDate)";
+
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@RoomName", room.RoomName),
+                new SqlParameter("@Capacity", room.Capacity),
+                new SqlParameter("@Location", (object)room.Location ?? DBNull.Value),
+                new SqlParameter("@Description", (object)room.Description ?? DBNull.Value),
+                new SqlParameter("@HasProjector", room.HasProjector),
+                new SqlParameter("@HasWhiteboard", room.HasWhiteboard),
+                new SqlParameter("@HasAudioSystem", room.HasAudioSystem),
+                new SqlParameter("@HasWiFi", room.HasWiFi),
+                new SqlParameter("@IsActive", room.IsActive),
+                new SqlParameter("@CreatedDate", DateTime.Now)
+            };
+
+            return dbHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
+
         public bool UpdateRoom(ConferenceRoom room)
         {
             var query = @"
