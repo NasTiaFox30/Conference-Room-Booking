@@ -65,6 +65,12 @@ body {
         background-color: var(--secondary-color);
     }
 
+/* Navbar Right Section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-user {
     display: flex;
     align-items: center;
