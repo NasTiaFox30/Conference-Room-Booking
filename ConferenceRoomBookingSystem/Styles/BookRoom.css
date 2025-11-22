@@ -183,61 +183,6 @@
     font-weight: 500;
 }
 
-/* Alerts */
-.alert {
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    font-weight: 500;
-    border: 1px solid transparent;
-    text-align: center;
-    display: block;
-    white-space: normal;
-    width: 100%;
-    box-sizing: border-box;
-    animation: fadeIn 0.5s ease-in;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border-color: #c3e6cb;
-}
-
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border-color: #f5c6cb;
-}
-
-.alert-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border-color: #bee5eb;
-}
-.alert {
-    animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@media (max-width: 600px) {
-    .alert {
-        padding: 0.75rem 1rem;
-        margin: 1rem auto;
-        font-size: 0.9rem;
-    }
-}
-
 /* Tablet and smaller desktop */
 @media (max-width: 968px) {
     .bookroom-content {
