@@ -138,7 +138,19 @@ namespace ConferenceRoomBookingSystem.Pages
                 }
             else
             {
+            }
         }
+
+        private void ClearPreviousResults()
+        {
+            // Desktop
+            gvAvailableRooms.DataSource = null;
+            gvAvailableRooms.DataBind();
+            gvAvailableRooms.Visible = false;
+
+            // Mobile
+            rptMobileRooms.DataSource = null;
+            rptMobileRooms.DataBind();
             }
 
         // Method for desktop view (badges)
