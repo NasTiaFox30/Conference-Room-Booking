@@ -123,6 +123,41 @@
     color: #856404;
 }
 
+/* Time badges */
+.time-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.time-badge-now {
+    background: #dc3545;
+    color: white;
+}
+
+.time-badge-soon {
+    background: #ffc107;
+    color: #212529;
+}
+
+.time-badge-upcoming {
+    background: #17a2b8;
+    color: white;
+}
+
+.time-badge-neutral {
+    background: #6c757d;
+    color: white;
+}
+
+.time-badge-cancelled {
+    background: #6c757d;
+    color: white;
+}
+
 .card-body {
     padding: 1rem;
 }
