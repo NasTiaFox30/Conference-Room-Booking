@@ -138,6 +138,9 @@ namespace ConferenceRoomBookingSystem.Pages
                 }
             else
             {
+                // No rooms found:
+                ClearPreviousResults();
+                ShowMessage("Brak dostępnych sal spełniających podane kryteria.", "info");
             }
             }
 
