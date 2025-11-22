@@ -40,7 +40,69 @@ namespace ConferenceRoomBookingSystem.Pages
 
         private void InitializeBookingForm()
         {
+            DateTime now = DateTime.Now;
+            DateTime nowTime = now.AddHours(6); // 6 hours before start
 
+            // If there are parameters from SearchRooms - use them
+            if (!string.IsNullOrEmpty(Request.QueryString["date"]))
+            {
+                txtBookingDate.Text = Request.QueryString["date"];
+                txtBookingStart.Text = Request.QueryString["start"];
+                txtBookingEnd.Text = Request.QueryString["end"];
+        }
+            else
+            {
+                // Set min date (today)
+                txtBookingDate.Text = now.ToString("yyyy-MM-dd");
+                txtBookingDate.Attributes["min"] = now.ToString("yyyy-MM-dd");
+
+                // If current time + 6 is more than 22:30 (today and next days)
+                if ((nowTime.Date == now.Date && nowTime.TimeOfDay > new TimeSpan(22, 30, 0)) || nowTime.Date > now.Date)
+                {
+                    // Move to next day
+                    DateTime nextDay = (nowTime.Date > now.Date) ? nowTime.Date : now.AddDays(1).Date;
+                    txtBookingDate.Text = nextDay.ToString("yyyy-MM-dd");
+                    txtBookingStart.Text = "05:00";
+                    txtBookingEnd.Text = "05:30";
+                }
+                else
+                {
+                    // Not earlier than  5:00
+                    if (nowTime.Hour < 5)
+                        txtBookingStart.Text = "05:00";
+                    else
+                        txtBookingStart.Text = nowTime.ToString("HH:mm");
+
+                    // Automatically set end time +30 minutes
+                    UpdateEndTime();
+                }
+            }
+
+            SetTimeConstraints();
+        }
+
+        private void SetTimeConstraints()
+        {
+            // Time reservation rules:
+            txtBookingStart.Attributes["min"] = "05:00";
+            txtBookingStart.Attributes["max"] = "22:30";
+            txtBookingEnd.Attributes["min"] = "05:30";
+            txtBookingEnd.Attributes["max"] = "23:00";
+        }
+
+        private void UpdateEndTime()
+        {
+            if (!string.IsNullOrEmpty(txtBookingStart.Text))
+            {
+                TimeSpan startTime = TimeSpan.Parse(txtBookingStart.Text);
+                TimeSpan endTime = startTime.Add(new TimeSpan(0, 30, 0));
+
+                // Check EndTime not later than 23:00
+                if (endTime > new TimeSpan(23, 0, 0))
+                    endTime = new TimeSpan(23, 0, 0);
+
+                txtBookingEnd.Text = endTime.ToString(@"hh\:mm");
+            }
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
