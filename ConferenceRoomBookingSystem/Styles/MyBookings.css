@@ -206,6 +206,24 @@
         font-size: 0.9rem;
     }
 
+/* Urgent booking styles */
+.urgent-booking {
+    background-color: #d8e6fb !important;
+    border-left: 4px solid #b1c7e7;
+}
+
+.urgent-booking-card {
+    background-color: #d8e6fb;
+    border: 4px solid #b1c7e7
+}
+
+/* Table adjustments for new column */
+.bookings-table.desktop-view th:nth-child(6),
+.bookings-table.desktop-view td:nth-child(6) {
+    text-align: center;
+    width: 140px;
+}
+
 /* Alerts */
 .alert {
     padding: 1rem 1.5rem;
