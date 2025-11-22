@@ -49,6 +49,22 @@ namespace ConferenceRoomBookingSystem.Admin
             txtDateTo.Text = "";
             LoadBookings();
         }
+
+        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int bookingId = Convert.ToInt32(e.CommandArgument);
+
+            switch (e.CommandName)
+            {
+                case "ConfirmBooking":
+                    UpdateBookingStatus(bookingId, "Confirmed");
+                    break;
+                case "CancelBooking":
+                    UpdateBookingStatus(bookingId, "Cancelled");
+                    break;
+                case "ViewDetails":
+                    Response.Redirect($"~/Pages/BookingDetails.aspx?bookingId={bookingId}");
+                    break;
             }
         }
 
