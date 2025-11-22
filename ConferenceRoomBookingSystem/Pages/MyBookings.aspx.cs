@@ -138,6 +138,32 @@ namespace ConferenceRoomBookingSystem.Pages
             return start > DateTime.Now.AddHours(2);
         }
 
+        public string GetTimeBadgeClass(object startTime, object endTime, object status)
+        {
+            if (status == null)
+                return "time-badge-neutral";
+
+            string statusStr = status.ToString();
+
+            if (statusStr == "Cancelled")
+                return "time-badge-cancelled";
+
+            if (startTime == null || endTime == null)
+                return "time-badge-neutral";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            DateTime end = DateTime.Parse(endTime.ToString());
+            DateTime now = DateTime.Now;
+
+            if (now >= start && now <= end)
+                return "time-badge-now"; // Right now
+            else if (start > now && start <= now.AddHours(2))
+                return "time-badge-soon"; // Less than 2h before
+            else if (start > now.AddHours(2) && start <= now.AddHours(24))
+                return "time-badge-upcoming"; // More than 24 h
+            else
+                return "time-badge-neutral"; // Later
+        }
         // Confirm canceling
         public string GetCancelConfirmation(object roomName, object startTime)
         {
