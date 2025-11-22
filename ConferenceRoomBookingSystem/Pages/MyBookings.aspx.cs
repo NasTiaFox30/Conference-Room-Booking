@@ -34,6 +34,7 @@ namespace ConferenceRoomBookingSystem.Pages
             // Show/hide empty message
             bool hasBookings = (bookings != null && bookings.Count > 0);
             gvMyBookings.Visible = hasBookings;
+            rptMobileBookings.Visible = hasBookings;
             lblNoBookings.Visible = !hasBookings;
         }
 
@@ -52,6 +53,26 @@ namespace ConferenceRoomBookingSystem.Pages
             HandleBookingCommand(e.CommandName, e.CommandArgument);
         }
 
+        protected void gvMyBookings_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Get info about reservation
+                var startTimeData = DataBinder.Eval(e.Row.DataItem, "StartTime");
+                var statusData = DataBinder.Eval(e.Row.DataItem, "Status");
+
+                if (startTimeData != null && statusData != null)
+                {
+                    DateTime startTime = DateTime.Parse(startTimeData.ToString());
+                    string status = statusData.ToString();
+
+                    // Important rezervations (less than 2h before)
+                    if (status == "Confirmed" && IsUrgentBooking(startTime))
+                        e.Row.CssClass += " urgent-booking";
+                }
+            }
+        }
+
         private void HandleBookingCommand(string commandName, object commandArgument)
         {
             if (commandName == "CancelBooking")
@@ -68,14 +89,38 @@ namespace ConferenceRoomBookingSystem.Pages
 
         private void CancelBooking(int bookingId)
         {
-            var bookingRepo = new BookingRepository();
-            if (bookingRepo.CancelBooking(bookingId))
+            try
             {
-                LoadMyBookings();
+                var bookingRepo = new BookingRepository();
+
+                // Get info about reservation (for cancel)
+                var booking = bookingRepo.GetBookingById(bookingId);
+                if (booking == null)
+                {
+                    ShowMessage("Rezerwacja nie została znaleziona.", "danger");
+                    return;
+                }
+
+                // Check if user can cancel
+                if (!CanCancelBooking(booking.Status, booking.StartTime))
+                {
+                    ShowMessage("Nie można anulować tej rezerwacji. Możliwość anulowania wygasa na 2 godziny przed rozpoczęciem wydarzenia.", "danger");
+                    return;
+                }
+
+                if (bookingRepo.CancelBooking(bookingId))
+                {
+                    ShowMessage($"Rezerwacja sali {booking.RoomName} na {booking.StartTime:dd.MM.yyyy HH:mm} została anulowana.", "success");
+                    LoadMyBookings();
+                }
+                else
+                {
+                    ShowMessage("Wystąpił błąd podczas anulowania rezerwacji. Spróbuj ponownie.", "danger");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Помилка при скасуванні бронювання');", true);
+                ShowMessage($"Błąd: {ex.Message}", "danger");
             }
         }
 
@@ -89,7 +134,104 @@ namespace ConferenceRoomBookingSystem.Pages
                 return false;
 
             DateTime start = DateTime.Parse(startTime.ToString());
-            return start > DateTime.Now.AddHours(24);
+            // Check: less than 2 hours before start
+            return start > DateTime.Now.AddHours(2);
+        }
+
+        public string GetTimeBadgeClass(object startTime, object endTime, object status)
+        {
+            if (status == null)
+                return "time-badge-neutral";
+
+            string statusStr = status.ToString();
+
+            if (statusStr == "Cancelled")
+                return "time-badge-cancelled";
+
+            if (startTime == null || endTime == null)
+                return "time-badge-neutral";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            DateTime end = DateTime.Parse(endTime.ToString());
+            DateTime now = DateTime.Now;
+
+            if (now >= start && now <= end)
+                return "time-badge-now"; // Right now
+            else if (start > now && start <= now.AddHours(2))
+                return "time-badge-soon"; // Less than 2h before
+            else if (start > now.AddHours(2) && start <= now.AddHours(24))
+                return "time-badge-upcoming"; // More than 24 h
+            else
+                return "time-badge-neutral"; // Later
+        }
+
+        public string GetTimeBadgeText(object startTime, object endTime, object status)
+        {
+            if (status == null)
+                return "";
+
+            string statusStr = status.ToString();
+
+            if (statusStr == "Cancelled")
+                return "Anulowana";
+
+            if (startTime == null || endTime == null)
+                return "";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            DateTime end = DateTime.Parse(endTime.ToString());
+            DateTime now = DateTime.Now;
+
+            if (now >= start && now <= end)
+                return "TERAZ";
+            else if (start > now)
+            {
+                TimeSpan timeLeft = start - now;
+
+                if (timeLeft.TotalHours < 1)
+                    return $"za {timeLeft.Minutes}m";
+                else if (timeLeft.TotalHours < 2)
+                    return $"za {timeLeft.Hours}h {timeLeft.Minutes}m";
+                else if (timeLeft.TotalHours < 24)
+                    return $"za {timeLeft.Hours}h";
+                else
+                    return $"za {timeLeft.Days}d";
+            }
+            else
+            {
+                return "Zakończona";
+            }
+        }
+
+        private bool IsUrgentBooking(DateTime startTime)
+        {
+            return startTime > DateTime.Now && startTime <= DateTime.Now.AddHours(2);
+        }
+
+        public string GetUrgentCardClass(object startTime, object status)
+        {
+            if (startTime == null || status == null)
+                return "";
+
+            string statusStr = status.ToString();
+            if (statusStr != "Confirmed")
+                return "";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            return IsUrgentBooking(start) ? "urgent-booking-card" : "";
+        }
+
+        // Confirm canceling
+        public string GetCancelConfirmation(object roomName, object startTime)
+        {
+            if (roomName == null || startTime == null)
+                return "return confirm('Czy na pewno chcesz anulować tę rezerwację?');";
+
+            string room = roomName.ToString();
+            DateTime start = DateTime.Parse(startTime.ToString());
+            string formattedDate = start.ToString("dd.MM.yyyy HH:mm");
+
+            return $"return confirm('Czy na pewno chcesz anulować rezerwację sali {room} na {formattedDate}?');";
         }
 
         // Helper method for formatting dates in mobile view
@@ -97,6 +239,13 @@ namespace ConferenceRoomBookingSystem.Pages
         {
             if (dateTime == null) return string.Empty;
             return Convert.ToDateTime(dateTime).ToString("dd.MM.yyyy HH:mm");
+        }
+
+        private void ShowMessage(string message, string type)
+        {
+            lblMessage.Text = message;
+            lblMessage.CssClass = $"alert alert-{type}";
+            lblMessage.Visible = true;
         }
 
         private int GetCurrentUserId()

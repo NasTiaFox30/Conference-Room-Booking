@@ -21,15 +21,32 @@
             </asp:DropDownList>
         </div>
 
+        <!-- Message block -->
+        <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
+
         <!-- Desktop Table -->
         <asp:GridView ID="gvMyBookings" runat="server" AutoGenerateColumns="false" 
-            CssClass="bookings-table desktop-view" OnRowCommand="gvMyBookings_RowCommand">
+            CssClass="bookings-table desktop-view" OnRowCommand="gvMyBookings_RowCommand"
+            OnRowDataBound="gvMyBookings_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="RoomName" HeaderText="Sala" />
                 <asp:BoundField DataField="Title" HeaderText="Tytuł wydarzenia" />
                 <asp:BoundField DataField="StartTime" HeaderText="Początek" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
                 <asp:BoundField DataField="EndTime" HeaderText="Koniec" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
-                <asp:BoundField DataField="Status" HeaderText="Status" />
+                <asp:TemplateField HeaderText="Status">
+                    <ItemTemplate>
+                        <span class='status-badge status-<%# Eval("Status") %>'>
+                            <%# Eval("Status") %>
+                        </span>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Czas do rozpoczęcia">
+                    <ItemTemplate>
+                        <span class='time-badge <%# GetTimeBadgeClass(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>'>
+                            <%# GetTimeBadgeText(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>
+                        </span>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Akcje">
                     <ItemTemplate>
                         <div class="action-buttons">
@@ -37,7 +54,8 @@
                                 CommandName="CancelBooking" 
                                 CommandArgument='<%# Eval("BookingId") %>'
                                 CssClass="btn btn-warning btn-sm" 
-                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' />
+                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' 
+                                OnClientClick='<%# GetCancelConfirmation(Eval("RoomName"), Eval("StartTime")) %>' />
                             <asp:Button ID="btnDetails" runat="server" Text="Szczegóły" 
                                 CommandName="ViewDetails" 
                                 CommandArgument='<%# Eval("BookingId") %>'
@@ -52,10 +70,15 @@
         <div class="mobile-bookings-cards mobile-view">
             <asp:Repeater ID="rptMobileBookings" runat="server" OnItemCommand="rptMobileBookings_ItemCommand">
                 <ItemTemplate>
-                    <div class="booking-card">
+                    <div class="booking-card <%# GetUrgentCardClass(Eval("StartTime"), Eval("Status")) %>">
                         <div class="card-header">
                             <h3 class="room-name"><%# Eval("RoomName") %></h3>
-                            <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
+                            <div class="header-badges">
+                                <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
+                                <span class='time-badge <%# GetTimeBadgeClass(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>'>
+                                    <%# GetTimeBadgeText(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>
+                                </span>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="booking-info">
@@ -78,7 +101,8 @@
                                 CommandName="CancelBooking" 
                                 CommandArgument='<%# Eval("BookingId") %>'
                                 CssClass="btn btn-warning btn-sm" 
-                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' />
+                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' 
+                                OnClientClick='<%# GetCancelConfirmation(Eval("RoomName"), Eval("StartTime")) %>' />
                             <asp:Button ID="btnDetailsMobile" runat="server" Text="Szczegóły" 
                                 CommandName="ViewDetails" 
                                 CommandArgument='<%# Eval("BookingId") %>'
