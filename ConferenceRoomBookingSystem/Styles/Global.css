@@ -78,6 +78,11 @@ body {
     color: white;
 }
 
+.user-greeting {
+    white-space: nowrap;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
