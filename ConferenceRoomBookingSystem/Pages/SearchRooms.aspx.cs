@@ -139,6 +139,13 @@ namespace ConferenceRoomBookingSystem.Pages
             else
             {
             }
+            }
+
+        private void ShowMessage(string message, string type)
+        {
+            lblMessage.Text = message;
+            lblMessage.CssClass = $"alert alert-{type}";
+            lblMessage.Visible = true;
         }
 
         private void ClearPreviousResults()
