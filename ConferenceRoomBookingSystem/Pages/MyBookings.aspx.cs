@@ -53,6 +53,26 @@ namespace ConferenceRoomBookingSystem.Pages
             HandleBookingCommand(e.CommandName, e.CommandArgument);
         }
 
+        protected void gvMyBookings_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Get info about reservation
+                var startTimeData = DataBinder.Eval(e.Row.DataItem, "StartTime");
+                var statusData = DataBinder.Eval(e.Row.DataItem, "Status");
+
+                if (startTimeData != null && statusData != null)
+                {
+                    DateTime startTime = DateTime.Parse(startTimeData.ToString());
+                    string status = statusData.ToString();
+
+                    // Important rezervations (less than 2h before)
+                    if (status == "Confirmed" && IsUrgentBooking(startTime))
+                        e.Row.CssClass += " urgent-booking";
+                    }
+                }
+            }
+
         private void HandleBookingCommand(string commandName, object commandArgument)
         {
             if (commandName == "CancelBooking")
