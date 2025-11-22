@@ -21,6 +21,9 @@
             </asp:DropDownList>
         </div>
 
+        <!-- Message block -->
+        <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
+
         <!-- Desktop Table -->
         <asp:GridView ID="gvMyBookings" runat="server" AutoGenerateColumns="false" 
             CssClass="bookings-table desktop-view" OnRowCommand="gvMyBookings_RowCommand">
