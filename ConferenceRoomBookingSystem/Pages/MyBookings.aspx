@@ -33,7 +33,13 @@
                 <asp:BoundField DataField="Title" HeaderText="Tytuł wydarzenia" />
                 <asp:BoundField DataField="StartTime" HeaderText="Początek" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
                 <asp:BoundField DataField="EndTime" HeaderText="Koniec" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
-                <asp:BoundField DataField="Status" HeaderText="Status" />
+                <asp:TemplateField HeaderText="Status">
+                    <ItemTemplate>
+                        <span class='status-badge status-<%# Eval("Status") %>'>
+                            <%# Eval("Status") %>
+                        </span>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Akcje">
                     <ItemTemplate>
                         <div class="action-buttons">
