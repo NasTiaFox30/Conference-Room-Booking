@@ -21,7 +21,7 @@ namespace ConferenceRoomBookingSystem.Pages
                     return;
                 }
                 LoadRoomDetails();
-                PrefillBookingTimes();
+                InitializeBookingForm();
             }
         }
 
@@ -38,7 +38,7 @@ namespace ConferenceRoomBookingSystem.Pages
             fvRoomDetails.DataBind();
         }
 
-        private void PrefillBookingTimes()
+        private void InitializeBookingForm()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["date"]))
                 txtBookingDate.Text = Request.QueryString["date"];
