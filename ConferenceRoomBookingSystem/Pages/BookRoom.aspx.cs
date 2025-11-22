@@ -109,7 +109,7 @@ namespace ConferenceRoomBookingSystem.Pages
             }
             catch (Exception ex)
             {
-                ShowError($"Błąd: {ex.Message}");
+                ShowMessage($"Błąd: {ex.Message}", "danger");
             }
         }
 
