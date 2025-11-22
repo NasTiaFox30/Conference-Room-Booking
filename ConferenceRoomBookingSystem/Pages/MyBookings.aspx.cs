@@ -202,6 +202,25 @@ namespace ConferenceRoomBookingSystem.Pages
                 return "Zakończona";
             }
         }
+
+        private bool IsUrgentBooking(DateTime startTime)
+        {
+            return startTime > DateTime.Now && startTime <= DateTime.Now.AddHours(2);
+        }
+
+        public string GetUrgentCardClass(object startTime, object status)
+        {
+            if (startTime == null || status == null)
+                return "";
+
+            string statusStr = status.ToString();
+            if (statusStr != "Confirmed")
+                return "";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            return IsUrgentBooking(start) ? "urgent-booking-card" : "";
+        }
+
         // Confirm canceling
         public string GetCancelConfirmation(object roomName, object startTime)
         {
