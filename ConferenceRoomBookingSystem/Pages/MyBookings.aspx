@@ -73,7 +73,9 @@
                     <div class="booking-card <%# GetUrgentCardClass(Eval("StartTime"), Eval("Status")) %>">
                         <div class="card-header">
                             <h3 class="room-name"><%# Eval("RoomName") %></h3>
+                            <div class="header-badges">
                             <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="booking-info">
