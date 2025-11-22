@@ -282,15 +282,15 @@ body {
     .navbar-collapse {
         gap: 0.5rem;
     }
-
+    
     .navbar-links {
         margin-left: 1rem;
     }
-
+    
     .navbar-user {
         gap: 0.5rem;
     }
-
+    
     .user-greeting {
         font-size: 0.85rem;
         margin-right: 0.25rem;
@@ -320,9 +320,9 @@ body {
         gap: 0;
     }
 
-        .navbar-collapse.active {
-            display: flex;
-        }
+    .navbar-collapse.active {
+        display: flex;
+    }
 
     .navbar-links {
         flex-direction: column;
@@ -393,11 +393,11 @@ body {
         padding: 0.6rem 0.75rem;
         font-size: 0.9rem;
     }
-
+    
     .navbar-user {
         gap: 0.25rem;
     }
-
+    
     .user-greeting {
         font-size: 0.8rem;
     }

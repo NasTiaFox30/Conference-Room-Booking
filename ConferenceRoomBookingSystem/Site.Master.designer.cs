@@ -42,15 +42,6 @@ namespace ConferenceRoomBookingSystem
         protected global::System.Web.UI.WebControls.Label lblUserName;
 
         /// <summary>
-        /// phGuest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phGuest;
-
-        /// <summary>
         /// AdminLink control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,15 @@ namespace ConferenceRoomBookingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink AdminLink;
+
+        /// <summary>
+        /// phGuest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phGuest;
 
         /// <summary>
         /// MainContent control.
