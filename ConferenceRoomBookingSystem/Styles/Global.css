@@ -40,6 +40,11 @@ body {
     position: relative;
 }
 
+.navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+}
 .navbar-links {
     display: flex;
     gap: 1rem;
