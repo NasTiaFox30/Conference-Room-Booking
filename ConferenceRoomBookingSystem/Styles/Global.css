@@ -83,6 +83,16 @@ body {
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
+
+.admin-link {
+    background-color: var(--warning-color);
+    border-color: #ccab06;
+}
+
+    .admin-link:hover {
+        background-color: #c78a00;
+    }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
