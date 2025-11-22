@@ -60,6 +60,15 @@
         <div class="footer">
             Confrence Room Booking System &copy; <%: DateTime.Now.Year %> - Anastasiia Bzova
         </div>
+
+        <script>
+            // Mobile Menu toggle
+            document.addEventListener('DOMContentLoaded', function () {
+                const navbarToggle = document.getElementById('navbarToggle');
+                const navbarCollapse = document.getElementById('navbarCollapse');
+
+            });
+        </script>
     </form>
 </body>
 </html>
