@@ -75,7 +75,8 @@ namespace ConferenceRoomBookingSystem.Pages
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Помилка при скасуванні бронювання');", true);
+                    ShowMessage("Wystąpił błąd podczas anulowania rezerwacji. Spróbuj ponownie.", "danger");
+                }
             }
         }
 
