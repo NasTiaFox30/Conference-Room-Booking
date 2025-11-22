@@ -22,6 +22,11 @@ namespace ConferenceRoomBookingSystem.Admin
                     return;
                 }
 
+        private void InitializeFilters()
+        {
+            txtDateFrom.Text = DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd");
+            txtDateTo.Text = DateTime.Today.AddDays(30).ToString("yyyy-MM-dd");
+        }
             }
         }
 
