@@ -108,11 +108,13 @@
 .status-Confirmed {
     background: #d4edda;
     color: #155724;
+    border: 1px solid #a6ecb5;
 }
 
 .status-Cancelled {
     background: #f8d7da;
     color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .status-Pending {
