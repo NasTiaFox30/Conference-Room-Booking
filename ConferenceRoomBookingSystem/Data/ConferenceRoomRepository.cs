@@ -89,12 +89,12 @@ namespace ConferenceRoomBookingSystem.Data
         public bool UpdateRoom(ConferenceRoom room)
         {
             var query = @"
-            UPDATE ConferenceRooms 
-            SET RoomName = @RoomName, Capacity = @Capacity, Location = @Location, 
-                Description = @Description, HasProjector = @HasProjector, 
-                HasWhiteboard = @HasWhiteboard, HasAudioSystem = @HasAudioSystem, 
-                HasWiFi = @HasWiFi
-            WHERE RoomId = @RoomId";
+                UPDATE ConferenceRooms 
+                SET RoomName = @RoomName, Capacity = @Capacity, Location = @Location, 
+                    Description = @Description, HasProjector = @HasProjector, 
+                    HasWhiteboard = @HasWhiteboard, HasAudioSystem = @HasAudioSystem, 
+                    HasWiFi = @HasWiFi
+                WHERE RoomId = @RoomId";
 
             var parameters = new SqlParameter[]
             {
