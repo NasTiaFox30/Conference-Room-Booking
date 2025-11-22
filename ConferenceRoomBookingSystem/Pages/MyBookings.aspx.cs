@@ -69,9 +69,9 @@ namespace ConferenceRoomBookingSystem.Pages
                     // Important rezervations (less than 2h before)
                     if (status == "Confirmed" && IsUrgentBooking(startTime))
                         e.Row.CssClass += " urgent-booking";
-                    }
                 }
             }
+        }
 
         private void HandleBookingCommand(string commandName, object commandArgument)
         {
@@ -91,7 +91,7 @@ namespace ConferenceRoomBookingSystem.Pages
         {
             try
             {
-            var bookingRepo = new BookingRepository();
+                var bookingRepo = new BookingRepository();
 
                 // Get info about reservation (for cancel)
                 var booking = bookingRepo.GetBookingById(bookingId);
@@ -108,20 +108,20 @@ namespace ConferenceRoomBookingSystem.Pages
                     return;
                 }
 
-            if (bookingRepo.CancelBooking(bookingId))
-            {
+                if (bookingRepo.CancelBooking(bookingId))
+                {
                     ShowMessage($"Rezerwacja sali {booking.RoomName} na {booking.StartTime:dd.MM.yyyy HH:mm} została anulowana.", "success");
-                LoadMyBookings();
-            }
-            else
-            {
+                    LoadMyBookings();
+                }
+                else
+                {
                     ShowMessage("Wystąpił błąd podczas anulowania rezerwacji. Spróbuj ponownie.", "danger");
                 }
             }
             catch (Exception ex)
             {
                 ShowMessage($"Błąd: {ex.Message}", "danger");
-        }
+            }
         }
 
         public bool CanCancelBooking(object status, object startTime)
