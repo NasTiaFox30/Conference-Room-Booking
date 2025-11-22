@@ -167,5 +167,15 @@ namespace ConferenceRoomBookingSystem.Data
             var parameters = new SqlParameter[] { new SqlParameter("@BookingId", bookingId) };
             return dbHelper.ExecuteNonQuery(query, parameters) > 0;
         }
+        public bool UpdateBookingStatus(int bookingId, string status)
+        {
+            var query = "UPDATE Bookings SET Status = @Status WHERE BookingId = @BookingId";
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@BookingId", bookingId),
+                new SqlParameter("@Status", status)
+            };
+            return dbHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
     }
 }
