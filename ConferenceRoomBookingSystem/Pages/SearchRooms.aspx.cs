@@ -310,8 +310,18 @@ namespace ConferenceRoomBookingSystem.Pages
             HandleBookCommand(e.CommandName, e.CommandArgument);
         }
 
+        private int GetCurrentUserId()
+        {
+            if (Session["UserId"] == null)
+                Response.Redirect("~/Pages/Login.aspx");
+            return (int)Session["UserId"];
+        }
+
         private void HandleBookCommand(string commandName, object commandArgument)
         {
+            //Checking auth
+            GetCurrentUserId();
+
             if (commandName == "BookRoom")
             {
                 int roomId = Convert.ToInt32(commandArgument);
