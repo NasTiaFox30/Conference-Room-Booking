@@ -124,6 +124,80 @@ namespace ConferenceRoomBookingSystem.Pages
             DisplaySearchResults(availableRooms);
         }
 
+        private bool ValidateSearchParameters()
+        {
+            // Check: Date
+            if (!DateTime.TryParse(txtDate.Text, out DateTime searchDate))
+            {
+                ShowMessage("Nieprawidłowy format daty.", "danger");
+                return false;
+            }
+
+            // Check: StartTime
+            if (!TimeSpan.TryParse(txtStartTime.Text, out TimeSpan startTime))
+            {
+                ShowMessage("Nieprawidłowy format godziny rozpoczęcia.", "danger");
+                return false;
+            }
+
+            // Check: EndTime
+            if (!TimeSpan.TryParse(txtEndTime.Text, out TimeSpan endTime))
+            {
+                ShowMessage("Nieprawidłowy format godziny zakończenia.", "danger");
+                return false;
+            }
+
+            DateTime now = DateTime.Now;
+
+            var startDateTime = searchDate.Add(startTime);
+            var endDateTime = searchDate.Add(endTime);
+
+            // Check 1: Not in the past
+            if (startDateTime <= now)
+            {
+                ShowMessage("Nie można wyszukiwać sal w przeszłości. Proszę wybrać przyszłą datę i godzinę.", "danger");
+                return false;
+            }
+
+            // Check 2: at least 6 hours before
+            DateTime nowTime = now.AddHours(6);
+            if (startDateTime < nowTime)
+            {
+                string correctMessage = GetCorrectMinBookingTimeMessage(nowTime);
+                ShowMessage(correctMessage, "danger");
+                return false;
+            }
+
+            // Check 3: StartTime not earlier than 5:00
+            if (startTime < new TimeSpan(5, 0, 0))
+            {
+                ShowMessage("Rezerwacja może rozpocząć się najwcześniej o 5:00 rano.", "danger");
+                return false;
+            }
+
+            // Check 4: EndTime not later than 23:00
+            if (endTime > new TimeSpan(23, 0, 0))
+            {
+                ShowMessage("Rezerwacja musi zakończyć się najpóźniej o 23:00.", "danger");
+                return false;
+            }
+
+            // Check 5: EndTime must be later than StartTime
+            if (endDateTime <= startDateTime)
+            {
+                ShowMessage("Godzina zakończenia musi być późniejsza niż godzina rozpoczęcia.", "danger");
+                return false;
+            }
+
+            // Check 6: min reservation - 30 min
+            if ((endDateTime - startDateTime).TotalMinutes < 30)
+            {
+                ShowMessage("Minimalny czas rezerwacji to 30 minut.", "danger");
+                return false;
+            }
+
+            return true;
+        }
         private void DisplaySearchResults(List<ConferenceRoom> availableRooms)
         {
             if (availableRooms.Any())
