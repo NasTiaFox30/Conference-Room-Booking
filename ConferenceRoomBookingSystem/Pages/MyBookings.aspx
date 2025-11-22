@@ -40,7 +40,8 @@
                                 CommandName="CancelBooking" 
                                 CommandArgument='<%# Eval("BookingId") %>'
                                 CssClass="btn btn-warning btn-sm" 
-                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' />
+                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' 
+                                OnClientClick='<%# GetCancelConfirmation(Eval("RoomName"), Eval("StartTime")) %>' />
                             <asp:Button ID="btnDetails" runat="server" Text="Szczegóły" 
                                 CommandName="ViewDetails" 
                                 CommandArgument='<%# Eval("BookingId") %>'
@@ -81,7 +82,8 @@
                                 CommandName="CancelBooking" 
                                 CommandArgument='<%# Eval("BookingId") %>'
                                 CssClass="btn btn-warning btn-sm" 
-                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' />
+                                Visible='<%# CanCancelBooking(Eval("Status"), Eval("StartTime")) %>' 
+                                OnClientClick='<%# GetCancelConfirmation(Eval("RoomName"), Eval("StartTime")) %>' />
                             <asp:Button ID="btnDetailsMobile" runat="server" Text="Szczegóły" 
                                 CommandName="ViewDetails" 
                                 CommandArgument='<%# Eval("BookingId") %>'
