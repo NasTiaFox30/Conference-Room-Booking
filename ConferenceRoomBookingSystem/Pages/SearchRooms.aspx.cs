@@ -198,6 +198,25 @@ namespace ConferenceRoomBookingSystem.Pages
 
             return true;
         }
+
+        private string GetCorrectMinBookingTimeMessage(DateTime nowTime)
+        {
+            DateTime now = DateTime.Now;
+
+            // If now time + 6 hours >  than 22:30 (Bringing to the Next Day)
+            if (nowTime.Date > now.Date)
+            {
+                // Next day 5:00 AM
+                DateTime nextDayMinTime = nowTime.Date.AddHours(5);
+                return $"code:2 Rezerwacja musi być dokonana co najmniej 6 godzin przed rozpoczęciem. Najwcześniejsza możliwa rezerwacja to {nextDayMinTime:dd.MM.yyyy} 05:00.";
+            }
+            else
+            {
+                // Today with calculated time
+                return $"code:3 Rezerwacja musi być dokonana co najmniej 6 godzin przed rozpoczęciem. Najwcześniejsza możliwa rezerwacja to {nowTime:dd.MM.yyyy HH:mm}.";
+            }
+        }
+
         private void DisplaySearchResults(List<ConferenceRoom> availableRooms)
         {
             if (availableRooms.Any())
