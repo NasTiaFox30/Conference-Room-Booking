@@ -120,6 +120,7 @@ namespace ConferenceRoomBookingSystem.Pages
 
                 availableRooms.Add(room);
             }
+        }
 
         private void DisplaySearchResults(List<ConferenceRoom> availableRooms)
         {
