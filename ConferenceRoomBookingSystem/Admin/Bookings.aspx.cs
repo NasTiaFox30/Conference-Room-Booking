@@ -28,6 +28,20 @@ namespace ConferenceRoomBookingSystem.Admin
             txtDateFrom.Text = DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd");
             txtDateTo.Text = DateTime.Today.AddDays(30).ToString("yyyy-MM-dd");
         }
+
+        private void LoadBookings()
+        {
+            DateTime? dateFrom = string.IsNullOrEmpty(txtDateFrom.Text) ? (DateTime?)null : DateTime.Parse(txtDateFrom.Text);
+            DateTime? dateTo = string.IsNullOrEmpty(txtDateTo.Text) ? (DateTime?)null : DateTime.Parse(txtDateTo.Text);
+
+            var bookings = bookingRepo.GetAllBookings(ddlStatusFilter.SelectedValue, dateFrom, dateTo);
+            gvBookings.DataSource = bookings;
+            gvBookings.DataBind();
+
+            gvBookings.Visible = bookings.Count > 0;
+            if (bookings.Count == 0)
+                ShowMessage("Brak rezerwacji do wyświetlenia.", "info");
+        }
             }
         }
 
