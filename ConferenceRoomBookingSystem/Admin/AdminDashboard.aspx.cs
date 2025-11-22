@@ -41,5 +41,15 @@ namespace ConferenceRoomBookingSystem.Admin
                 b.Status == "Confirmed" && b.StartTime.Date == DateTime.Today);
             lblTodayBookings.Text = todayBookings.Count.ToString();
         }
+
+        protected void btnRooms_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin/Rooms.aspx");
+        }
+
+        protected void btnBookings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin/Bookings.aspx");
+        }
     }
 }
