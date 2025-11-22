@@ -80,8 +80,8 @@ namespace ConferenceRoomBookingSystem.Pages
                     UserId = GetCurrentUserId(),
                     Title = txtTitle.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                    StartTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingStart.Text),
-                    EndTime = DateTime.Parse(txtBookingDate.Text + " " + txtBookingEnd.Text),
+                    StartTime = startTime,
+                    EndTime = endTime,
                     Attendees = txtAttendees.Text.Trim(),
                     Status = "Confirmed",
                     CreatedDate = DateTime.Now
