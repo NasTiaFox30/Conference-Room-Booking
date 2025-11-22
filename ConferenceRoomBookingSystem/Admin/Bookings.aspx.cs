@@ -72,5 +72,12 @@ namespace ConferenceRoomBookingSystem.Admin
             }
         }
 
+
+        private void ShowMessage(string message, string type)
+        {
+            lblMessage.Text = message;
+            lblMessage.CssClass = $"alert alert-{type}";
+            lblMessage.Visible = true;
+        }
     }
 }
