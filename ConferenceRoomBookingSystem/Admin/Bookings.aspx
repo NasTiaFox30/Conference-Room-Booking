@@ -15,7 +15,32 @@
         <!-- Message block -->
         <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
 
-       
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label class="form-label">Status:</label>
+                <asp:DropDownList ID="ddlStatusFilter" runat="server" AutoPostBack="true" 
+                    OnSelectedIndexChanged="ddlStatusFilter_SelectedIndexChanged" CssClass="form-control">
+                    <asp:ListItem Text="Wszystkie" Value="All" Selected="True" />
+                    <asp:ListItem Text="Potwierdzone" Value="Confirmed" />
+                    <asp:ListItem Text="Anulowane" Value="Cancelled" />
+                </asp:DropDownList>
+            </div>
+            <div class="filter-group">
+                <label class="form-label">Data od:</label>
+                <asp:TextBox ID="txtDateFrom" runat="server" TextMode="Date" CssClass="form-control" />
+            </div>
+            <div class="filter-group">
+                <label class="form-label">Data do:</label>
+                <asp:TextBox ID="txtDateTo" runat="server" TextMode="Date" CssClass="form-control" />
+            </div>
+            <div class="filter-group">
+                <asp:Button ID="btnApplyFilters" runat="server" Text="Filtruj" 
+                    OnClick="btnApplyFilters_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="btnClearFilters" runat="server" Text="Wyczyść" 
+                    OnClick="btnClearFilters_Click" CssClass="btn btn-secondary" />
+            </div>
+        </div>
 
         <!-- Bookings Grid -->
         <asp:GridView ID="gvBookings" runat="server" AutoGenerateColumns="false" 
