@@ -148,6 +148,12 @@ namespace ConferenceRoomBookingSystem.Pages
             lblMessage.Visible = true;
         }
 
+        private void ClearMessages()
+        {
+            lblMessage.Visible = false;
+            lblMessage.Text = string.Empty;
+        }
+
         private void ClearPreviousResults()
         {
             // Desktop
