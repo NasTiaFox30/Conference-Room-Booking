@@ -308,6 +308,11 @@
         flex-direction: column;
         gap: 0.5rem;
     }
+
+    .time-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
 }
 
 @media (max-width: 769px) {
