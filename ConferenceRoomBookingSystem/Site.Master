@@ -67,6 +67,29 @@
                 const navbarToggle = document.getElementById('navbarToggle');
                 const navbarCollapse = document.getElementById('navbarCollapse');
 
+                if (navbarToggle && navbarCollapse) {
+                    navbarToggle.addEventListener('click', function () {
+                        navbarCollapse.classList.toggle('active');
+                        navbarToggle.classList.toggle('active');
+                    });
+
+                    // Close menu (clicking link)
+                    const navLinks = navbarCollapse.querySelectorAll('.navbar-link');
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', function () {
+                            navbarCollapse.classList.remove('active');
+                            navbarToggle.classList.remove('active');
+                        });
+                    });
+
+                    // Close menu (clicking outside)
+                    document.addEventListener('click', function (event) {
+                        if (!navbarToggle.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                            navbarCollapse.classList.remove('active');
+                            navbarToggle.classList.remove('active');
+                        }
+                    });
+                }
             });
         </script>
     </form>
