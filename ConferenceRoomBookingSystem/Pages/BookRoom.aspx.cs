@@ -100,6 +100,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 if (bookingRepo.CreateBooking(booking))
                 {
                     ShowMessage("Sala została pomyślnie zarezerwowana!", "success");
+                    ClearForm();
                     // FUTURE TO-DO: Można dodać wysyłkę e-maila
                 }
                 else
