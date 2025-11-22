@@ -60,5 +60,11 @@ namespace ConferenceRoomBookingSystem.Data
                 CreatedDate = Convert.ToDateTime(row["CreatedDate"])
             };
         }
+        public bool DeleteRoom(int roomId)
+        {
+            var query = "UPDATE ConferenceRooms SET IsActive = 0 WHERE RoomId = @RoomId";
+            var parameters = new SqlParameter[] { new SqlParameter("@RoomId", roomId) };
+            return dbHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
     }
 }
