@@ -114,7 +114,8 @@ namespace ConferenceRoomBookingSystem.Pages
                 return false;
 
             DateTime start = DateTime.Parse(startTime.ToString());
-            return start > DateTime.Now.AddHours(24);
+            // Check: less than 2 hours before start
+            return start > DateTime.Now.AddHours(2);
         }
 
         // Helper method for formatting dates in mobile view
