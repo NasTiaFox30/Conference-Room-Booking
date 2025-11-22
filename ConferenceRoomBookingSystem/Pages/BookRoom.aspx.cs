@@ -244,6 +244,25 @@ namespace ConferenceRoomBookingSystem.Pages
 
             return true;
         }
+
+        private string GetCorrectMinBookingTimeMessage(DateTime nowTime)
+        {
+            DateTime now = DateTime.Now;
+
+            // If now time + 6 hours >  than 22:30 (Bringing to the Next Day)
+            if (nowTime.Date > now.Date)
+            {
+                // Next day at 5:00
+                DateTime nextDayMinTime = nowTime.Date.AddHours(5);
+                return $"Rezerwacja musi być dokonana co najmniej 6 godzin przed rozpoczęciem. Najwcześniejsza możliwa rezerwacja to {nextDayMinTime:dd.MM.yyyy} 05:00.";
+            }
+            else
+            {
+                // Today with calculated time
+                return $"Rezerwacja musi być dokonana co najmniej 6 godzin przed rozpoczęciem. Najwcześniejsza możliwa rezerwacja to {nowTime:dd.MM.yyyy HH:mm}.";
+            }
+        }
+
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/SearchRooms.aspx");
