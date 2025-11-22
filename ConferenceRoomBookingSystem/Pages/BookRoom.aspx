@@ -11,7 +11,7 @@
         <div class="bookroom-header">
             <h2 class="bookroom-title">Rezerwacja sali konferencyjnej</h2>
         </div>
-       
+
          <!-- Message block -->
         <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
        
@@ -97,6 +97,6 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </asp:Content>

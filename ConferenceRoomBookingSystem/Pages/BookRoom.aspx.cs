@@ -49,7 +49,7 @@ namespace ConferenceRoomBookingSystem.Pages
                 txtBookingDate.Text = Request.QueryString["date"];
                 txtBookingStart.Text = Request.QueryString["start"];
                 txtBookingEnd.Text = Request.QueryString["end"];
-        }
+            }
             else
             {
                 // Set min date (today)

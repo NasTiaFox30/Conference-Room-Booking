@@ -46,11 +46,11 @@ namespace ConferenceRoomBookingSystem.Pages
 
                 // Automatically set end time +30 minutes
                 UpdateEndTime();
-        }
+            }
 
             SetTimeConstraints();
         }
-        
+
         private void SetTimeConstraints()
         {
             // Time reservation rules:
@@ -232,14 +232,14 @@ namespace ConferenceRoomBookingSystem.Pages
                 rptMobileRooms.DataBind();
 
                 ShowMessage($"Znaleziono {availableRooms.Count} dostępnych sal.", "success");
-                }
+            }
             else
             {
                 // No rooms found:
                 ClearPreviousResults();
                 ShowMessage("Brak dostępnych sal spełniających podane kryteria.", "info");
             }
-            }
+        }
 
         private void ShowMessage(string message, string type)
         {
@@ -264,7 +264,7 @@ namespace ConferenceRoomBookingSystem.Pages
             // Mobile
             rptMobileRooms.DataSource = null;
             rptMobileRooms.DataBind();
-            }
+        }
 
         // Method for desktop view (badges)
         public string GetEquipmentBadges(object hasProjector, object hasWhiteboard, object hasAudioSystem, object hasWiFi)

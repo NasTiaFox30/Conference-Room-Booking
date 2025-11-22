@@ -54,7 +54,7 @@
                 OnClick="btnSearch_Click" CssClass="search-button btn btn-primary" />
         </div>
 
-         <!-- Message block -->
+        <!-- Message block -->
         <asp:Label ID="lblMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
 
         <!-- Desktop Table -->
