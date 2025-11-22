@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Room Booking</title>
 
+    <link href="<%= ResolveUrl("~/Styles/Global.css") %>" rel="stylesheet" type="text/css" />
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
