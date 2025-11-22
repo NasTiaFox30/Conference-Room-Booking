@@ -60,6 +60,32 @@ namespace ConferenceRoomBookingSystem.Data
                 CreatedDate = Convert.ToDateTime(row["CreatedDate"])
             };
         }
+        public bool UpdateRoom(ConferenceRoom room)
+        {
+            var query = @"
+            UPDATE ConferenceRooms 
+            SET RoomName = @RoomName, Capacity = @Capacity, Location = @Location, 
+                Description = @Description, HasProjector = @HasProjector, 
+                HasWhiteboard = @HasWhiteboard, HasAudioSystem = @HasAudioSystem, 
+                HasWiFi = @HasWiFi
+            WHERE RoomId = @RoomId";
+
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@RoomId", room.RoomId),
+                new SqlParameter("@RoomName", room.RoomName),
+                new SqlParameter("@Capacity", room.Capacity),
+                new SqlParameter("@Location", (object)room.Location ?? DBNull.Value),
+                new SqlParameter("@Description", (object)room.Description ?? DBNull.Value),
+                new SqlParameter("@HasProjector", room.HasProjector),
+                new SqlParameter("@HasWhiteboard", room.HasWhiteboard),
+                new SqlParameter("@HasAudioSystem", room.HasAudioSystem),
+                new SqlParameter("@HasWiFi", room.HasWiFi)
+            };
+
+            return dbHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
+
         public bool DeleteRoom(int roomId)
         {
             var query = "UPDATE ConferenceRooms SET IsActive = 0 WHERE RoomId = @RoomId";
