@@ -15,6 +15,7 @@
 <body>
     <form runat="server">
         <div class="navbar">
+            <div class="navbar-collapse" id="navbarCollapse">
             <div class="navbar-links">
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/Default.aspx" Text="Główna" CssClass="navbar-link" />
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/SearchRooms.aspx" Text="Search room" CssClass="navbar-link" />
@@ -37,6 +38,7 @@
 
             <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link" />
         </div>
+            </div>
 
         <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
