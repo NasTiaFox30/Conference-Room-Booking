@@ -117,7 +117,7 @@ namespace ConferenceRoomBookingSystem.Pages
             lblMessage.Visible = true;
         }
 
-        private void ShowSuccess(string message)
+        private void ClearForm()
         {
             lblMessage.Text = message;
             lblMessage.CssClass = "alert alert-success";
