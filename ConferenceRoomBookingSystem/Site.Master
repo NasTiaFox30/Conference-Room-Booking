@@ -15,6 +15,9 @@
 <body>
     <form runat="server">
         <div class="navbar">
+            <div class="navbar-brand">
+                <span>Conference-Room Booking</span>
+            </div>
             
             <!-- Hamburger menu for mobile -->
             <button type="button" class="navbar-toggle" id="navbarToggle">
