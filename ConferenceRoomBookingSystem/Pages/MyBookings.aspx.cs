@@ -164,6 +164,44 @@ namespace ConferenceRoomBookingSystem.Pages
             else
                 return "time-badge-neutral"; // Later
         }
+
+        public string GetTimeBadgeText(object startTime, object endTime, object status)
+        {
+            if (status == null)
+                return "";
+
+            string statusStr = status.ToString();
+
+            if (statusStr == "Cancelled")
+                return "Anulowana";
+
+            if (startTime == null || endTime == null)
+                return "";
+
+            DateTime start = DateTime.Parse(startTime.ToString());
+            DateTime end = DateTime.Parse(endTime.ToString());
+            DateTime now = DateTime.Now;
+
+            if (now >= start && now <= end)
+                return "TERAZ";
+            else if (start > now)
+            {
+                TimeSpan timeLeft = start - now;
+
+                if (timeLeft.TotalHours < 1)
+                    return $"za {timeLeft.Minutes}m";
+                else if (timeLeft.TotalHours < 2)
+                    return $"za {timeLeft.Hours}h {timeLeft.Minutes}m";
+                else if (timeLeft.TotalHours < 24)
+                    return $"za {timeLeft.Hours}h";
+                else
+                    return $"za {timeLeft.Days}d";
+            }
+            else
+            {
+                return "Zakończona";
+            }
+        }
         // Confirm canceling
         public string GetCancelConfirmation(object roomName, object startTime)
         {
