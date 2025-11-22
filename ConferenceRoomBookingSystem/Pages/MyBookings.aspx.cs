@@ -99,6 +99,13 @@ namespace ConferenceRoomBookingSystem.Pages
             return Convert.ToDateTime(dateTime).ToString("dd.MM.yyyy HH:mm");
         }
 
+        private void ShowMessage(string message, string type)
+        {
+            lblMessage.Text = message;
+            lblMessage.CssClass = $"alert alert-{type}";
+            lblMessage.Visible = true;
+        }
+
         private int GetCurrentUserId()
         {
             if (Session["UserId"] == null)
