@@ -247,6 +247,11 @@
         width: 100%;
         max-width: 280px;
     }
+
+    .card-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 
 @media (max-width: 769px) {
@@ -270,10 +275,4 @@
     .room-card {
         margin-bottom: 0.75rem;
     }
-
-    .card-header {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
 }
