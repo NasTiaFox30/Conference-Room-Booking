@@ -75,6 +75,9 @@
                             <h3 class="room-name"><%# Eval("RoomName") %></h3>
                             <div class="header-badges">
                             <span class="status-badge status-<%# Eval("Status") %>"><%# Eval("Status") %></span>
+                                <span class='time-badge <%# GetTimeBadgeClass(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>'>
+                                    <%# GetTimeBadgeText(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>
+                                </span>
                             </div>
                         </div>
                         <div class="card-body">
