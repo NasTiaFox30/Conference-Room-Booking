@@ -40,6 +40,13 @@
                         </span>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Czas do rozpoczęcia">
+                    <ItemTemplate>
+                        <span class='time-badge <%# GetTimeBadgeClass(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>'>
+                            <%# GetTimeBadgeText(Eval("StartTime"), Eval("EndTime"), Eval("Status")) %>
+                        </span>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Akcje">
                     <ItemTemplate>
                         <div class="action-buttons">
