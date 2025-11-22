@@ -17,7 +17,7 @@ namespace ConferenceRoomBookingSystem.Pages
             {
                 if (!int.TryParse(Request.QueryString["roomId"], out roomId))
                 {
-                    ShowError("Nieprawidłowy identyfikator sali.");
+                    ShowMessage("Nieprawidłowy identyfikator sali.", "danger");
                     return;
                 }
                 LoadRoomDetails();
@@ -31,7 +31,7 @@ namespace ConferenceRoomBookingSystem.Pages
             room = roomRepo.GetRoomById(roomId);
             if (room == null)
             {
-                ShowError("Sala nie została znaleziona.");
+                ShowMessage("Sala nie została znaleziona.", "danger");
                 return;
             }
             fvRoomDetails.DataSource = new[] { room };
@@ -60,7 +60,7 @@ namespace ConferenceRoomBookingSystem.Pages
         {
             if (!int.TryParse(Request.QueryString["roomId"], out roomId))
             {
-                ShowError("Nieprawidłowy identyfikator sali.");
+                ShowMessage("Nieprawidłowy identyfikator sali.", "danger");
                 return;
             }
 
@@ -84,19 +84,19 @@ namespace ConferenceRoomBookingSystem.Pages
                 // Check conflict validation
                 if (!bookingRepo.IsRoomAvailable(roomId, booking.StartTime, booking.EndTime))
                 {
-                    ShowError("Sala jest już zarezerwowana na wybrany czas. Proszę wybrać inny termin.");
+                    ShowMessage("Sala jest już zarezerwowana na wybrany czas. Proszę wybrać inny termin.", "danger");
                     return;
                 }
 
                 // Save reservation
                 if (bookingRepo.CreateBooking(booking))
                 {
-                    ShowSuccess("Sala została pomyślnie zarezerwowana!");
+                    ShowMessage("Sala została pomyślnie zarezerwowana!", "success");
                     // FUTURE TO-DO: Można dodać wysyłkę e-maila
                 }
                 else
                 {
-                    ShowError("Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.");
+                    ShowMessage("Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.", "danger");
                 }
             }
             catch (Exception ex)
