@@ -26,6 +26,7 @@
             <asp:PlaceHolder ID="phAuth" runat="server">
                 <div class="navbar-user">
                             <span class="user-greeting">Witaj, <asp:Label ID="lblUserName" runat="server" />!</span>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link admin-link" />
                     <asp:HyperLink runat="server" NavigateUrl="~/Pages/Logout.aspx" Text="Wyloguj" CssClass="navbar-link" />
                 </div>
             </asp:PlaceHolder>
