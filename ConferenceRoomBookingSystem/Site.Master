@@ -15,29 +15,15 @@
 <body>
     <form runat="server">
         <div class="navbar">
-            <div class="navbar-brand">
-                <span>Conference-Room Booking</span>
-            </div>
-            
-            <!-- Hamburger menu for mobile -->
-            <button type="button" class="navbar-toggle" id="navbarToggle">
-                <span class="toggle-bar"></span>
-                <span class="toggle-bar"></span>
-                <span class="toggle-bar"></span>
-            </button>
-
-            <div class="navbar-collapse" id="navbarCollapse">
             <div class="navbar-links">
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/Default.aspx" Text="Główna" CssClass="navbar-link" />
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/SearchRooms.aspx" Text="Search room" CssClass="navbar-link" />
                 <asp:HyperLink runat="server" NavigateUrl="~/Pages/MyBookings.aspx" Text="My bookings" CssClass="navbar-link" />
             </div>
 
-                <div class="navbar-right">
             <asp:PlaceHolder ID="phAuth" runat="server">
                 <div class="navbar-user">
-                            <span class="user-greeting">Witaj, <asp:Label ID="lblUserName" runat="server" />!</span>
-                            <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link admin-link" />
+                    <span>Witaj, <asp:Label ID="lblUserName" runat="server" />!</span>
                     <asp:HyperLink runat="server" NavigateUrl="~/Pages/Logout.aspx" Text="Wyloguj" CssClass="navbar-link" />
                 </div>
             </asp:PlaceHolder>
@@ -48,8 +34,8 @@
                     <asp:HyperLink runat="server" NavigateUrl="~/Pages/Register.aspx" Text="Zarejestruj się" CssClass="navbar-link" />
                 </div>
             </asp:PlaceHolder>
-        </div>
-            </div>
+
+            <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link" />
         </div>
 
         <div class="container">
@@ -60,38 +46,6 @@
         <div class="footer">
             Confrence Room Booking System &copy; <%: DateTime.Now.Year %> - Anastasiia Bzova
         </div>
-
-        <script>
-            // Mobile Menu toggle
-            document.addEventListener('DOMContentLoaded', function () {
-                const navbarToggle = document.getElementById('navbarToggle');
-                const navbarCollapse = document.getElementById('navbarCollapse');
-
-                if (navbarToggle && navbarCollapse) {
-                    navbarToggle.addEventListener('click', function () {
-                        navbarCollapse.classList.toggle('active');
-                        navbarToggle.classList.toggle('active');
-                    });
-
-                    // Close menu (clicking link)
-                    const navLinks = navbarCollapse.querySelectorAll('.navbar-link');
-                    navLinks.forEach(link => {
-                        link.addEventListener('click', function () {
-                            navbarCollapse.classList.remove('active');
-                            navbarToggle.classList.remove('active');
-                        });
-                    });
-
-                    // Close menu (clicking outside)
-                    document.addEventListener('click', function (event) {
-                        if (!navbarToggle.contains(event.target) && !navbarCollapse.contains(event.target)) {
-                            navbarCollapse.classList.remove('active');
-                            navbarToggle.classList.remove('active');
-                        }
-                    });
-                }
-            });
-        </script>
     </form>
 </body>
 </html>
