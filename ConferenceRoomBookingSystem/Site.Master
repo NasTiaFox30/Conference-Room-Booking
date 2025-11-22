@@ -15,27 +15,41 @@
 <body>
     <form runat="server">
         <div class="navbar">
-            <div class="navbar-links">
-                <asp:HyperLink runat="server" NavigateUrl="~/Pages/Default.aspx" Text="Główna" CssClass="navbar-link" />
-                <asp:HyperLink runat="server" NavigateUrl="~/Pages/SearchRooms.aspx" Text="Search room" CssClass="navbar-link" />
-                <asp:HyperLink runat="server" NavigateUrl="~/Pages/MyBookings.aspx" Text="My bookings" CssClass="navbar-link" />
+            <div class="navbar-brand">
+                <span>Conference-Room Booking</span>
             </div>
+            
+            <!-- Hamburger menu for mobile -->
+            <button type="button" class="navbar-toggle" id="navbarToggle">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
 
-            <asp:PlaceHolder ID="phAuth" runat="server">
-                <div class="navbar-user">
-                    <span>Witaj, <asp:Label ID="lblUserName" runat="server" />!</span>
-                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Logout.aspx" Text="Wyloguj" CssClass="navbar-link" />
+            <div class="navbar-collapse" id="navbarCollapse">
+                <div class="navbar-links">
+                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Default.aspx" Text="Główna" CssClass="navbar-link" />
+                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/SearchRooms.aspx" Text="Search room" CssClass="navbar-link" />
+                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/MyBookings.aspx" Text="My bookings" CssClass="navbar-link" />
                 </div>
-            </asp:PlaceHolder>
 
-            <asp:PlaceHolder ID="phGuest" runat="server">
-                <div class="navbar-user">
-                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Login.aspx" Text="Zaloguj się" CssClass="navbar-link" />
-                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Register.aspx" Text="Zarejestruj się" CssClass="navbar-link" />
+                <div class="navbar-right">
+                    <asp:PlaceHolder ID="phAuth" runat="server">
+                        <div class="navbar-user">
+                            <span class="user-greeting">Witaj, <asp:Label ID="lblUserName" runat="server" />!</span>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link admin-link" />
+                            <asp:HyperLink runat="server" NavigateUrl="~/Pages/Logout.aspx" Text="Wyloguj" CssClass="navbar-link" />
+                        </div>
+                    </asp:PlaceHolder>
+
+                    <asp:PlaceHolder ID="phGuest" runat="server">
+                        <div class="navbar-user">
+                            <asp:HyperLink runat="server" NavigateUrl="~/Pages/Login.aspx" Text="Zaloguj się" CssClass="navbar-link" />
+                            <asp:HyperLink runat="server" NavigateUrl="~/Pages/Register.aspx" Text="Zarejestruj się" CssClass="navbar-link" />
+                        </div>
+                    </asp:PlaceHolder>
                 </div>
-            </asp:PlaceHolder>
-
-            <asp:HyperLink runat="server" NavigateUrl="~/Admin/Rooms.aspx" Text="Administration" Visible="false" ID="AdminLink" CssClass="navbar-link" />
+            </div>
         </div>
 
         <div class="container">
