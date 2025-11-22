@@ -110,7 +110,7 @@ namespace ConferenceRoomBookingSystem.Pages
             Response.Redirect("~/Pages/SearchRooms.aspx");
         }
 
-        private void ShowError(string message)
+        private void ShowMessage(string message, string type)
         {
             lblMessage.Text = message;
             lblMessage.CssClass = "alert alert-danger";
