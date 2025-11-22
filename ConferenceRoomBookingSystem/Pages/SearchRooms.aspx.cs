@@ -82,14 +82,15 @@ namespace ConferenceRoomBookingSystem.Pages
 
         private void SearchAvailableRooms()
         {
-            if (!DateTime.TryParse(txtDate.Text, out DateTime searchDate))
-                searchDate = DateTime.Now;
+            // CLEAN: messages and results
+            ClearPreviousResults();
+            ClearMessages();
 
-            if (!TimeSpan.TryParse(txtStartTime.Text, out TimeSpan startTime))
-                startTime = new TimeSpan(9, 0, 0);
+            if (!ValidateSearchParameters()) { return; }
 
-            if (!TimeSpan.TryParse(txtEndTime.Text, out TimeSpan endTime))
-                endTime = new TimeSpan(10, 0, 0);
+            DateTime searchDate = DateTime.Parse(txtDate.Text);
+            TimeSpan startTime = TimeSpan.Parse(txtStartTime.Text);
+            TimeSpan endTime = TimeSpan.Parse(txtEndTime.Text);
 
             var startDateTime = searchDate.Add(startTime);
             var endDateTime = searchDate.Add(endTime);
