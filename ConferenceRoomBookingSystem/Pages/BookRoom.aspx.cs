@@ -113,7 +113,7 @@ namespace ConferenceRoomBookingSystem.Pages
         private void ShowMessage(string message, string type)
         {
             lblMessage.Text = message;
-            lblMessage.CssClass = "alert alert-danger";
+            lblMessage.CssClass = $"alert alert-{type}";
             lblMessage.Visible = true;
         }
 
