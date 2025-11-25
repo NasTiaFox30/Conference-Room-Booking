@@ -46,6 +46,17 @@ namespace ConferenceRoomBookingSystem.Admin
             if (bookings.Count == 0)
                 ShowMessage("Brak rezerwacji do wyświetlenia.", "info");
         }
+
+        protected void ddlStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadBookings();
+        }
+
+        protected void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            LoadBookings();
+        }
+
         protected void btnClearFilters_Click(object sender, EventArgs e)
         {
             ddlStatusFilter.SelectedValue = "All";
