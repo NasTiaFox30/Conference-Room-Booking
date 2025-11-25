@@ -136,5 +136,19 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             // Assert
             Assert.IsFalse(result, "A booking with a time conflict should not be created");
         }
+
+        [TestMethod]
+        public void GetUserBookings_WithValidUserId_ReturnsBookings()
+        {
+            // Arrange
+            var user = _userRepo.GetUserByUsername("testuser");
+
+            // Act
+            var bookings = _bookingRepo.GetUserBookings(user.UserId);
+
+            // Assert
+            Assert.IsNotNull(bookings);
+            Assert.IsInstanceOfType(bookings, typeof(List<Booking>));
+        }
     }
 }
