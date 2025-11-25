@@ -13,5 +13,13 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
         private BookingRepository _bookingRepo;
         private ConferenceRoomRepository _roomRepo;
         private UsersRepository _userRepo;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _bookingRepo = new BookingRepository();
+            _roomRepo = new ConferenceRoomRepository();
+            _userRepo = new UsersRepository();
+        }
     }
 }
