@@ -186,5 +186,54 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             var cancelledBooking = _bookingRepo.GetBookingById(bookingId);
             Assert.AreEqual("Cancelled", cancelledBooking.Status, "Booking status must be 'Cancelled'");
         }
+
+        [TestMethod]
+        public void CompleteBookingFlow_IntegrationTest()
+        {
+            // Arrange
+            var rooms = _roomRepo.GetAllRooms();
+            var room = rooms.First();
+            var user = _userRepo.GetUserByUsername("testuser");
+
+            DateTime startTime = DateTime.Now.AddDays(1).Date.AddHours(10);
+            DateTime endTime = startTime.AddHours(1);
+
+            // Act & Assert
+            // 1. check the availability of the room
+            bool isAvailable = _bookingRepo.IsRoomAvailable(room.RoomId, startTime, endTime);
+            Assert.IsTrue(isAvailable, "The room must be available before booking");
+
+            // 2. Making booking
+            var booking = new Booking
+            {
+                RoomId = room.RoomId,
+                UserId = user.UserId,
+                Title = "Complete Flow Test " + Guid.NewGuid().ToString().Substring(0, 8),
+                StartTime = startTime,
+                EndTime = endTime,
+                Status = "Confirmed"
+            };
+
+            bool createResult = _bookingRepo.CreateBooking(booking);
+            Assert.IsTrue(createResult, "The reservation must have been created successfully");
+
+            // 3. check that the room is no longer available
+            bool isAvailableAfterBooking = _bookingRepo.IsRoomAvailable(room.RoomId, startTime, endTime);
+            Assert.IsFalse(isAvailableAfterBooking, "Кімната не повинна бути доступна після бронювання");
+
+            // 4. Check that the reservation has appeared in the user's list
+            var userBookings = _bookingRepo.GetUserBookings(user.UserId);
+            Assert.IsTrue(userBookings.Any(b => b.Title.StartsWith("Complete Flow Test")),
+                "The reservation should appear in the user's list");
+
+            // 5. cancel the reservation
+            var createdBooking = userBookings.First(b => b.Title.StartsWith("Complete Flow Test"));
+            bool cancelResult = _bookingRepo.CancelBooking(createdBooking.BookingId);
+            Assert.IsTrue(cancelResult, "The cancellation must be successful");
+
+            // 6. We are checking that the room is available again
+            bool isAvailableAfterCancel = _bookingRepo.IsRoomAvailable(room.RoomId, startTime, endTime);
+            Assert.IsTrue(isAvailableAfterCancel, "The room must be available again after cancellation");
+        }
     }
 }
