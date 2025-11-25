@@ -67,5 +67,32 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             // Assert
             Assert.IsFalse(result, "The room must not be available after booking");
         }
+
+        [TestMethod]
+        public void CreateBooking_WithValidData_ReturnsTrue()
+        {
+            // Arrange
+            var rooms = _roomRepo.GetAllRooms();
+            var room = rooms.First();
+            var user = _userRepo.GetUserByUsername("testuser");
+
+            var booking = new Booking
+            {
+                RoomId = room.RoomId,
+                UserId = user.UserId,
+                Title = "Test Meeting " + Guid.NewGuid().ToString().Substring(0, 8),
+                Description = "Test Description",
+                StartTime = DateTime.Now.AddDays(2).Date.AddHours(14),
+                EndTime = DateTime.Now.AddDays(2).Date.AddHours(16),
+                Attendees = "user1@test.com,user2@test.com",
+                Status = "Confirmed"
+            };
+
+            // Act
+            bool result = _bookingRepo.CreateBooking(booking);
+
+            // Assert
+            Assert.IsTrue(result, "The reservation must have been created successfully");
+        }
     }
 }
