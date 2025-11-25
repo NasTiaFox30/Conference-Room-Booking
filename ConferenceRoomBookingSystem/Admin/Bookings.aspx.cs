@@ -90,6 +90,17 @@ namespace ConferenceRoomBookingSystem.Admin
             }
         }
 
+        public string GetCancelConfirmation(object roomName, object startTime)
+        {
+            if (roomName == null || startTime == null)
+                return "return confirm('Czy na pewno chcesz anulować tę rezerwację?');";
+
+            string room = roomName.ToString();
+            DateTime start = DateTime.Parse(startTime.ToString());
+            string formattedDate = start.ToString("dd.MM.yyyy HH:mm");
+
+            return $"return confirm('Czy na pewno chcesz anulować rezerwację sali {room} na {formattedDate}?');";
+        }
 
         private void ShowMessage(string message, string type)
         {
