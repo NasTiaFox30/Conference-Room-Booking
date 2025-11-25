@@ -21,5 +21,21 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             _roomRepo = new ConferenceRoomRepository();
             _userRepo = new UsersRepository();
         }
+
+        [TestMethod]
+        public void IsRoomAvailable_WhenRoomAvailable_ReturnsTrue()
+        {
+            // Arrange
+            var rooms = _roomRepo.GetAllRooms();
+            var room = rooms.First();
+            DateTime startTime = DateTime.Now.AddDays(1).Date.AddHours(10);
+            DateTime endTime = startTime.AddHours(2);
+
+            // Act
+            bool result = _bookingRepo.IsRoomAvailable(room.RoomId, startTime, endTime);
+
+            // Assert
+            Assert.IsTrue(result, "Кімната повинна бути доступна");
+        }
     }
 }
