@@ -72,6 +72,24 @@ namespace ConferenceRoomBookingSystem.Admin
             }
         }
 
+        private void UpdateBookingStatus(int bookingId, string status)
+        {
+            try
+            {
+                if (bookingRepo.UpdateBookingStatus(bookingId, status))
+                {
+                    ShowMessage($"Status rezerwacji został zmieniony na '{status}'.", "success");
+                    LoadBookings();
+                }
+                else
+                    ShowMessage("Wystąpił błąd podczas aktualizacji statusu rezerwacji.", "danger");
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Błąd: {ex.Message}", "danger");
+            }
+        }
+
 
         private void ShowMessage(string message, string type)
         {
