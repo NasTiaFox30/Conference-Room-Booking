@@ -23,6 +23,7 @@ User & Admin Roles: Distinct interfaces for general employees to book rooms and 
 BCrypt.Net-Next NuGet package
 
 # 🚀 How to start app locally?
+#### Creating SQL DataBase
 1) Create Local DB in folder App_Data
    
    ```Add > New item... > SQL Server DataBase```
@@ -33,7 +34,17 @@ BCrypt.Net-Next NuGet package
    
    Change parameter:  ```connectionString="``` (paste copied string here)
 
-4) Run the application on localhost by pressing F5
+#### Create Structure
+1) Double click on created DataBase
+2) Right mouse click ```ConferenceRoomsBookingSystem.mdf > NewQuery```
+3) Copy/paste first query file - SQLQuery1.sql into created one
+4) Execute All
+5) Copy/paste second query file - SQLQuery2.sql into created one
+6) Execute Cleanup then rest of query
+7) Refresh DB
+
+#### Start Application
+Run the application on localhost by pressing F5
 
 ---------------------------------------------------------------
 _**Creator: Anastasiia Bzova 2025**_
