@@ -35,7 +35,7 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             bool result = _bookingRepo.IsRoomAvailable(room.RoomId, startTime, endTime);
 
             // Assert
-            Assert.IsTrue(result, "Кімната повинна бути доступна");
+            Assert.IsTrue(result, "The room must be available");
         }
     }
 }
