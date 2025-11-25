@@ -150,5 +150,41 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             Assert.IsNotNull(bookings);
             Assert.IsInstanceOfType(bookings, typeof(List<Booking>));
         }
+
+        [TestMethod]
+        public void CancelBooking_WithValidId_ReturnsTrue()
+        {
+            // Arrange
+            var rooms = _roomRepo.GetAllRooms();
+            var room = rooms.First();
+            var user = _userRepo.GetUserByUsername("testuser");
+
+            // create a test reservation
+            var booking = new Booking
+            {
+                RoomId = room.RoomId,
+                UserId = user.UserId,
+                Title = "Meeting to Cancel " + Guid.NewGuid().ToString().Substring(0, 8),
+                StartTime = DateTime.Now.AddDays(1).Date.AddHours(15),
+                EndTime = DateTime.Now.AddDays(1).Date.AddHours(16),
+                Status = "Confirmed"
+            };
+            _bookingRepo.CreateBooking(booking);
+
+            // Get the ID of the created reservation
+            var userBookings = _bookingRepo.GetUserBookings(user.UserId);
+            var createdBooking = userBookings.First(b => b.Title.StartsWith("Meeting to Cancel"));
+            int bookingId = createdBooking.BookingId;
+
+            // Act
+            bool result = _bookingRepo.CancelBooking(bookingId);
+
+            // Assert
+            Assert.IsTrue(result, "The cancellation must be successful");
+
+            // Check that the status has changed
+            var cancelledBooking = _bookingRepo.GetBookingById(bookingId);
+            Assert.AreEqual("Cancelled", cancelledBooking.Status, "Booking status must be 'Cancelled'");
+        }
     }
 }
