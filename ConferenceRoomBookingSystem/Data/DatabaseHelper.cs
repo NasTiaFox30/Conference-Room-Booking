@@ -16,8 +16,8 @@ namespace ConferenceRoomBookingSystem.Data
             if (ConfigurationManager.AppSettings["TestMode"] == "true")
                 connectionString = ConfigurationManager.ConnectionStrings["TestBookingDB"].ConnectionString;
             else
-            connectionString = ConfigurationManager.ConnectionStrings["BookingDB"].ConnectionString;
-
+                connectionString = ConfigurationManager.ConnectionStrings["BookingDB"].ConnectionString;
+            
             if (connectionString.Contains("|DataDirectory|"))
             {
                 string dataDirectory;
