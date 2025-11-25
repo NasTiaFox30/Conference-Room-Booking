@@ -56,5 +56,34 @@ namespace ConferenceRoomBookingSystem.Tests.TestHelpers
                 throw;
             }
         }
+
+        public static void CleanupTestData()
+        {
+            try
+            {
+                Console.WriteLine(" == Clearing test data...");
+
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string cleanupScript = @"
+                    DELETE FROM Bookings;
+                    DELETE FROM ConferenceRooms WHERE RoomName LIKE '%Test%';
+                    DELETE FROM Users WHERE Username LIKE '%testuser_%' OR Username LIKE 'newuser_%';";
+
+                    using (var command = new SqlCommand(cleanupScript, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                Console.WriteLine("✅ Test data successfully cleared!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error clearing test data: {ex.Message}");
+            }
+        }
     }
 }
