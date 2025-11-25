@@ -94,5 +94,47 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
             // Assert
             Assert.IsTrue(result, "The reservation must have been created successfully");
         }
+
+        [TestMethod]
+        public void CreateBooking_WithTimeConflict_ReturnsFalse()
+        {
+            // Arrange
+            var rooms = _roomRepo.GetAllRooms();
+            var room = rooms.First();
+            var user1 = _userRepo.GetUserByUsername("testuser");
+            var user2 = _userRepo.GetUserByUsername("adminuser");
+
+            DateTime startTime = DateTime.Now.AddDays(3).Date.AddHours(10);
+            DateTime endTime = startTime.AddHours(2);
+
+            // First booking
+            var booking1 = new Booking
+            {
+                RoomId = room.RoomId,
+                UserId = user1.UserId,
+                Title = "First Meeting",
+                StartTime = startTime,
+                EndTime = endTime,
+                Status = "Confirmed"
+            };
+            _bookingRepo.CreateBooking(booking1);
+
+            // Second booking with time conflict
+            var booking2 = new Booking
+            {
+                RoomId = room.RoomId,
+                UserId = user2.UserId,
+                Title = "Second Meeting",
+                StartTime = startTime.AddHours(1), // conflict
+                EndTime = endTime.AddHours(1),
+                Status = "Confirmed"
+            };
+
+            // Act
+            bool result = _bookingRepo.CreateBooking(booking2);
+
+            // Assert
+            Assert.IsFalse(result, "A booking with a time conflict should not be created");
+        }
     }
 }
