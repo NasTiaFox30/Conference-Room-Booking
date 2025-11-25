@@ -10,5 +10,8 @@ namespace ConferenceRoomBookingSystem.Tests.UnitTests
     [TestClass]
     public class BookingRepositoryTests
     {
+        private BookingRepository _bookingRepo;
+        private ConferenceRoomRepository _roomRepo;
+        private UsersRepository _userRepo;
     }
 }
