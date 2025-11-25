@@ -6,5 +6,6 @@ namespace ConferenceRoomBookingSystem.Tests.TestHelpers
 {
     public static class TestDatabaseInitializer
     {
+        private static readonly string ConnectionString = new DatabaseHelper().GetConnection().ConnectionString;
     }
 }
