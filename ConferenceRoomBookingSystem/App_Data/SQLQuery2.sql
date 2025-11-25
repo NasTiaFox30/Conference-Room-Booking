@@ -1,4 +1,12 @@
-﻿-- Test Conference Rooms
+﻿-- CleanUp
+DELETE FROM Bookings;
+DELETE FROM ConferenceRooms;
+DELETE FROM Users;
+DBCC CHECKIDENT ('Bookings', RESEED, 0);
+DBCC CHECKIDENT ('ConferenceRooms', RESEED, 0);
+DBCC CHECKIDENT ('Users', RESEED, 0);
+
+-- Test Conference Rooms
 INSERT INTO ConferenceRooms (RoomName, Capacity, Location, Description, HasProjector, HasWhiteboard, HasAudioSystem, HasWiFi)
 VALUES 
 ('Sala A - Mała sala konferencyjna', 10, '1 piętro, pok. 101', 'Mały pokój do spotkań zespołowych i dyskusji', 1, 1, 0, 1),
@@ -10,5 +18,5 @@ VALUES
 -- test users for development and testing purposes
 INSERT INTO Users (Username, Email, FirstName, LastName, Department, PasswordHash, IsAdmin, IsActive)
 VALUES 
-('testuser', 'test@company.com', 'Test', 'User', 'IT', '$2a$11$examplehash', 0, 1),
-('adminuser', 'admin@company.com', 'Admin', 'User', 'Management', '$2a$11$adminhash', 1, 1);
+('testuser', 'test@company.com', 'Test', 'User', 'IT', '$2a$11$3TxAntKMlL5rz8IyF3p6de.mAseOdaZnedOA9D213ezJKrf/laBlC', 0, 1),
+('adminuser', 'admin@company.com', 'Admin', 'User', 'Management', '$2a$11$3TxAntKMlL5rz8IyF3p6de.mAseOdaZnedOA9D213ezJKrf/laBlC', 1, 1);
