@@ -167,5 +167,70 @@ namespace ConferenceRoomBookingSystem.Data
             var parameters = new SqlParameter[] { new SqlParameter("@BookingId", bookingId) };
             return dbHelper.ExecuteNonQuery(query, parameters) > 0;
         }
+
+        public List<Booking> GetAllBookings(string statusFilter = "All", DateTime? dateFrom = null, DateTime? dateTo = null)
+        {
+            var bookings = new List<Booking>();
+            string query = @"
+                SELECT b.*, r.RoomName, u.FirstName + ' ' + u.LastName AS UserName
+                FROM Bookings b
+                INNER JOIN ConferenceRooms r ON b.RoomId = r.RoomId
+                INNER JOIN Users u ON b.UserId = u.UserId
+                WHERE 1=1";
+
+            var parameters = new List<SqlParameter>();
+
+            if (statusFilter != "All")
+            {
+                query += " AND b.Status = @Status";
+                parameters.Add(new SqlParameter("@Status", statusFilter));
+            }
+
+            if (dateFrom.HasValue)
+            {
+                query += " AND b.StartTime >= @DateFrom";
+                parameters.Add(new SqlParameter("@DateFrom", dateFrom.Value));
+            }
+
+            if (dateTo.HasValue)
+            {
+                query += " AND b.StartTime <= @DateTo";
+                parameters.Add(new SqlParameter("@DateTo", dateTo.Value.AddDays(1).AddSeconds(-1)));
+            }
+
+            query += " ORDER BY b.StartTime DESC";
+
+            var dataTable = dbHelper.ExecuteQuery(query, parameters.ToArray());
+            foreach (DataRow row in dataTable.Rows)
+            {
+                bookings.Add(new Booking
+                {
+                    BookingId = Convert.ToInt32(row["BookingId"]),
+                    RoomId = Convert.ToInt32(row["RoomId"]),
+                    UserId = Convert.ToInt32(row["UserId"]),
+                    Title = row["Title"].ToString(),
+                    Description = row["Description"]?.ToString(),
+                    StartTime = Convert.ToDateTime(row["StartTime"]),
+                    EndTime = Convert.ToDateTime(row["EndTime"]),
+                    Attendees = row["Attendees"]?.ToString(),
+                    Status = row["Status"].ToString(),
+                    CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                    RoomName = row["RoomName"].ToString(),
+                    UserName = row["UserName"].ToString()
+                });
+            }
+            return bookings;
+        }
+
+        public bool UpdateBookingStatus(int bookingId, string status)
+        {
+            var query = "UPDATE Bookings SET Status = @Status WHERE BookingId = @BookingId";
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@BookingId", bookingId),
+                new SqlParameter("@Status", status)
+            };
+            return dbHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
     }
 }
