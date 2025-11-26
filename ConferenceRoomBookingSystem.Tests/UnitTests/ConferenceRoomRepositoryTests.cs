@@ -104,5 +104,34 @@ namespace ConferenceRoomBookingSystem.Tests
             room.RoomName = originalName;
             _roomRepo.UpdateRoom(room);
         }
+
+        [TestMethod]
+        public void DeleteRoom_WithValidId_ReturnsTrue()
+        {
+            // Arrange
+            // Create a test room
+            var room = new ConferenceRoom
+            {
+                RoomName = "Room to Delete",
+                Capacity = 10,
+                Location = "Test Location",
+                IsActive = true
+            };
+            _roomRepo.CreateRoom(room);
+
+            // Get the ID of the created room
+            var rooms = _roomRepo.GetAllRooms();
+            int roomId = rooms.Find(r => r.RoomName == "Room to Delete").RoomId;
+
+            // Act
+            bool result = _roomRepo.DeleteRoom(roomId);
+
+            // Assert
+            Assert.IsTrue(result);
+
+            // Check that the room is inactive
+            var deletedRoom = _roomRepo.GetRoomById(roomId);
+            Assert.IsFalse(deletedRoom.IsActive);
+        }
     }
 }
