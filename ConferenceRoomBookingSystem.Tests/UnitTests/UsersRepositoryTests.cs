@@ -83,5 +83,33 @@ namespace ConferenceRoomBookingSystem.Tests
             // Assert
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void CreateUser_WithValidData_ReturnsTrue()
+        {
+            // Arrange
+            var user = new User
+            {
+                Username = "newuser_" + System.Guid.NewGuid().ToString().Substring(0, 8),
+                Email = "newuser@test.com",
+                FirstName = "New",
+                LastName = "User",
+                Department = "IT",
+                IsAdmin = false,
+                IsActive = true
+            };
+            string password = "newpassword123";
+
+            // Act
+            bool result = _userRepo.CreateUser(user, password);
+
+            // Assert
+            Assert.IsTrue(result);
+
+            // Check that the user can be found
+            var createdUser = _userRepo.GetUserByUsername(user.Username);
+            Assert.IsNotNull(createdUser);
+            Assert.AreEqual(user.Email, createdUser.Email);
+        }
     }
 }
