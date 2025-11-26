@@ -31,5 +31,16 @@ namespace ConferenceRoomBookingSystem.Tests
             string testPassword = "testpassword123";
             _userRepo.CreateUser(_testUser, testPassword);
         }
+
+        [TestMethod]
+        public void GetUserByUsername_WithValidUsername_ReturnsUser()
+        {
+            // Arrange & Act
+            var user = _userRepo.GetUserByUsername(_testUser.Username);
+
+            // Assert
+            Assert.IsNotNull(user);
+            Assert.AreEqual(_testUser.Username, user.Username);
+        }
     }
 }
