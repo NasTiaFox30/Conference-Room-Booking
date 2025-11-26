@@ -9,5 +9,11 @@ namespace ConferenceRoomBookingSystem.Tests
     public class ConferenceRoomRepositoryTests
     {
         private ConferenceRoomRepository _roomRepo;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _roomRepo = new ConferenceRoomRepository();
+        }
     }
 }
