@@ -69,5 +69,19 @@ namespace ConferenceRoomBookingSystem.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void ValidateUser_WithInvalidPassword_ReturnsFalse()
+        {
+            // Arrange
+            string username = _testUser.Username;
+            string wrongPassword = "wrongpassword";
+
+            // Act
+            bool result = _userRepo.ValidateUser(username, wrongPassword);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
     }
 }
