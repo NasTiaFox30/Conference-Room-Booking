@@ -30,5 +30,19 @@ namespace ConferenceRoomBookingSystem.Tests
             foreach (var room in rooms)
                 Assert.IsTrue(room.IsActive);
         }
+
+        [TestMethod]
+        public void GetRoomById_WithValidId_ReturnsRoom()
+        {
+            // Arrange
+            int roomId = 1;
+
+            // Act
+            var room = _roomRepo.GetRoomById(roomId);
+
+            // Assert
+            Assert.IsNotNull(room);
+            Assert.AreEqual(roomId, room.RoomId);
+        }
     }
 }
