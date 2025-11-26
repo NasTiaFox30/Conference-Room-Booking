@@ -15,5 +15,20 @@ namespace ConferenceRoomBookingSystem.Tests
         {
             _roomRepo = new ConferenceRoomRepository();
         }
+
+        [TestMethod]
+        public void GetAllRooms_ReturnsActiveRooms()
+        {
+            // Act
+            var rooms = _roomRepo.GetAllRooms();
+
+            // Assert
+            Assert.IsNotNull(rooms);
+            Assert.IsInstanceOfType(rooms, typeof(List<ConferenceRoom>));
+
+            // Сheck that all rooms are active
+            foreach (var room in rooms)
+                Assert.IsTrue(room.IsActive);
+        }
     }
 }
