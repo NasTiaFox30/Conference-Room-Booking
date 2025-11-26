@@ -42,5 +42,18 @@ namespace ConferenceRoomBookingSystem.Tests
             Assert.IsNotNull(user);
             Assert.AreEqual(_testUser.Username, user.Username);
         }
+
+        [TestMethod]
+        public void GetUserByUsername_WithInvalidUsername_ReturnsNull()
+        {
+            // Arrange
+            string invalidUsername = "nonexistentuser_" + System.Guid.NewGuid().ToString();
+
+            // Act
+            var user = _userRepo.GetUserByUsername(invalidUsername);
+
+            // Assert
+            Assert.IsNull(user);
+        }
     }
 }
