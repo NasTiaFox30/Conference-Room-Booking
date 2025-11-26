@@ -57,5 +57,10 @@ User & Admin Roles: Distinct interfaces for general employees to book rooms and 
 #### Start Application
 Run the application on localhost by pressing F5
 
+# 🚀 How to Test application?
+On panel in left rouge : ```Test > Test Explorer > Ctrl + R,V```
+
+on the right side you can see logs and test results
+
 ---------------------------------------------------------------
 _**Creator: Anastasiia Bzova 2025**_
