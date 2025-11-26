@@ -21,17 +21,17 @@ User & Admin Roles: Distinct interfaces for general employees to book rooms and 
 
 ## Libraries ( NuGet )
 #### ConferenceRoomBookingSystem.csproj:
-BCrypt.Net-Next NuGet package
+- BCrypt.Net-Next NuGet package
 
 #### ConferenceRoomBookingSystem.Tests.csproj:
-Microsoft.NET.Test.Sdk 18.0.1
-MSTest.TestAdapter 4.0.2
-MSTest.TestFramework 4.0.2
-Selenium.WebDriver 4.38.0
-Selenium.WebDriver.ChromeDriver 142.0.7444.17500
-Moq 4.20.72
-EntityFramework 6.5.1
-System.Data.SqlClient 4.9.0
+- Microsoft.NET.Test.Sdk 18.0.1
+- MSTest.TestAdapter 4.0.2
+- MSTest.TestFramework 4.0.2
+- Selenium.WebDriver 4.38.0
+- Selenium.WebDriver.ChromeDriver 142.0.7444.17500
+- Moq 4.20.72
+- EntityFramework 6.5.1
+- System.Data.SqlClient 4.9.0
 
 # 🚀 How to start app locally?
 #### Creating SQL DataBase
