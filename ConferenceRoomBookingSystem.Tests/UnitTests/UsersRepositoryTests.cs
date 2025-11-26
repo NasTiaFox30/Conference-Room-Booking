@@ -10,5 +10,26 @@ namespace ConferenceRoomBookingSystem.Tests
     {
         private UsersRepository _userRepo;
         private User _testUser;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _userRepo = new UsersRepository();
+
+            // Create a test user for tests
+            _testUser = new User
+            {
+                Username = "testuser_" + System.Guid.NewGuid().ToString().Substring(0, 8),
+                Email = "test_" + System.Guid.NewGuid().ToString().Substring(0, 8) + "@company.com",
+                FirstName = "Test",
+                LastName = "User",
+                Department = "IT",
+                IsAdmin = false,
+                IsActive = true
+            };
+
+            string testPassword = "testpassword123";
+            _userRepo.CreateUser(_testUser, testPassword);
+        }
     }
 }
