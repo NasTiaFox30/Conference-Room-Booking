@@ -81,5 +81,28 @@ namespace ConferenceRoomBookingSystem.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void UpdateRoom_WithValidData_ReturnsTrue()
+        {
+            // Arrange
+            var room = _roomRepo.GetRoomById(1);
+            string originalName = room.RoomName;
+            room.RoomName = "Updated Room Name";
+
+            // Act
+            bool result = _roomRepo.UpdateRoom(room);
+
+            // Assert
+            Assert.IsTrue(result);
+
+            // Check that the data has been updated
+            var updatedRoom = _roomRepo.GetRoomById(1);
+            Assert.AreEqual("Updated Room Name", updatedRoom.RoomName);
+
+            // Restore the original name
+            room.RoomName = originalName;
+            _roomRepo.UpdateRoom(room);
+        }
     }
 }
