@@ -8,5 +8,6 @@ namespace ConferenceRoomBookingSystem.Tests
     [TestClass]
     public class ConferenceRoomRepositoryTests
     {
+        private ConferenceRoomRepository _roomRepo;
     }
 }
