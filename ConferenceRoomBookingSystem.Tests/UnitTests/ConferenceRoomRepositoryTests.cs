@@ -44,5 +44,18 @@ namespace ConferenceRoomBookingSystem.Tests
             Assert.IsNotNull(room);
             Assert.AreEqual(roomId, room.RoomId);
         }
+
+        [TestMethod]
+        public void GetRoomById_WithInvalidId_ReturnsNull()
+        {
+            // Arrange
+            int invalidRoomId = 999;
+
+            // Act
+            var room = _roomRepo.GetRoomById(invalidRoomId);
+
+            // Assert
+            Assert.IsNull(room);
+        }
     }
 }
