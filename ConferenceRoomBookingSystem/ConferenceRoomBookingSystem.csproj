@@ -83,6 +83,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TestDatabase.mdf" />
+    <Content Include="App_Data\TestDatabase_log.ldf">
+      <DependentUpon>TestDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\ConferenceRoomsBookingSystem.mdf" />
     <Content Include="App_Data\ConferenceRoomsBookingSystem_log.ldf">
       <DependentUpon>ConferenceRoomsBookingSystem.mdf</DependentUpon>
