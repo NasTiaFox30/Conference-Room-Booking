@@ -57,5 +57,29 @@ namespace ConferenceRoomBookingSystem.Tests
             // Assert
             Assert.IsNull(room);
         }
+
+        [TestMethod]
+        public void CreateRoom_WithValidData_ReturnsTrue()
+        {
+            // Arrange
+            var room = new ConferenceRoom
+            {
+                RoomName = "Test Room",
+                Capacity = 15,
+                Location = "Test Location",
+                Description = "Test Description",
+                HasProjector = true,
+                HasWhiteboard = true,
+                HasAudioSystem = false,
+                HasWiFi = true,
+                IsActive = true
+            };
+
+            // Act
+            bool result = _roomRepo.CreateRoom(room);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }
